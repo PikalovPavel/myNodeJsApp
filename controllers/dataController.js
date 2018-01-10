@@ -54,7 +54,7 @@ module.exports = (app, synchronizer) => {
         synchronizer.sequelize.models.ЖУРНАЛ.findOne ({
             where : {
                 ЧЕЛОВЕК_ИД: req.params.prId,
-                ПРЕДМЕТ: req.params.subId
+                НАЗВАНИЕ: req.params.subId
             },
             attributes: ['ЧЕЛОВЕК_ИД','КР1','КР2','КР3','КР4','ЛК'],
             include: [
@@ -84,6 +84,23 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/subjects', isLoggedIn, (req, resp) => {
+        synchronizer.sequelize.models.ПРЕДМЕТ.findAll({
+            attributes: ['НАЗВАНИЕ']
+        }).then((subject) => {
+            subject ?
+                resp.send(JSON.stringify(subject)) :
+                resp.send('[]');
+        });
+    });
+
+    app.get('/test/:id1/:id2', (req,resp)=>{
+
+       synchronizer.sequelize.query("INSERT into ПРЕДМЕТ VALUES('"+req.params.id1+"', '"+req.params.id2.toString()+"')").spread((results, metadata) => {
+       }).catch(function (err) {
+           console.log("error");
+       });
+    });
     app.get('/api/leagues/:code', isLoggedIn, (req, resp) => {
         synchronizer.sequelize.models.League.findOne({
             where: {
