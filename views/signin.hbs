@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Red Sun Jail</title>
+    <meta charset="UTF-8">
+
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css\global.css">
+    <link rel="stylesheet" href="css\signUpIn.css">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            <form class="signin" method="post" action="/signin">
+
+                <img class="start-logo" src="img\logo.png" alt="logo"/>
+
+                <div class="form-group">
+                    <label for="username">Введите логин</label>
+                    <input id="username" class="form-control" name="username" type="text" placeholder="логин">
+                </div>
+                <div class="form-group">
+                    <label for="password">Введите пароль</label>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="пароль">
+                </div>
+
+                <button id="btn-signin" class="btn btn-success" type="submit">ВОЙТИ</button>
+
+                <span class="left link"><a href="/signup">Зарегистрироваться</a></span>
+
+                <div class="error-msg">{{message}}</div>
+
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

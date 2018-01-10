@@ -1,0 +1,23 @@
+/* Рястяжка страницы на всю высоту */
+body, html {
+    height: 100%;
+}
+
+/* Параметры фона */
+body {
+    background-color: #e6e6e6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Позиционирование блока по левому краю родиеля */
+.left {
+    float: left;
+}
+
+/* Позиционирование блока по правому краю родиеля */
+.right {
+    float: right;
+}

@@ -1,0 +1,42 @@
+/* Все кнопки авторизации */
+#btn-signin {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* Логотип на страницах авторизации */
+.start-logo {
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Сообщения об ошибках */
+.error-msg {
+    font-weight: bold;
+    width: 100%;
+    color: crimson;
+    text-align: center;
+}
+
+
+.signin {
+    background-color: #8cde6e;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Иконки социальных сетей */
+.sn-icon {
+    width: 25px;
+    height: auto;
+}
+
+/* Навигация между страницами регистрации и авторизации */
+.link > a {
+    font-weight: bold;
+    color: SteelBlue;
+}
