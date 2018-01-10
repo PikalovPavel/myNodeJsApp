@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('РОДСТВЕННАЯ_СВЯЗЬ', {
-        ЗК_ИД: {
+        ЧЕЛОВЕК_ИД: {
             type: DataTypes.INTEGER,
             primaryKey: true
         },
