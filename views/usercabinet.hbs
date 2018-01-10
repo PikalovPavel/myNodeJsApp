@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Red Sun Jail</title>
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <!-- Jquery for Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Local stylesheet -->
+    <link rel="stylesheet" href="css\global.css">
+    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\cabinet.css">
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body class="home">
+<div class="container-fluid display-table">
+    <div class="row display-table-row">
+        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+            <div class="logo">
+                <a href="/main"><img src="img\logo.png" alt="red_sun_jail_logo" class="hidden-xs hidden-sm">
+                    <img src="img\logo.png" alt="red_sun_jail_logo" class="visible-xs visible-sm circle-logo">
+                </a>
+            </div>
+            <div class="navi">
+                <ul>
+                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Обо мне</span></a></li>
+                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заявка на посещение</span></a></li>
+                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заявка на досрочное</span></a></li>
+                    <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10 col-sm-11 display-table-cell v-align">
+            <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+            <div class = "row">
+                <header>
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header" >
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">
+                                    <img alt="Brand" class="header-logo" src="img\logo.png">
+                                </a>
+                            </div>
+
+                            <p class="navbar-text">Red Sun Jail</p>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <form class="navbar-form navbar-left">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Личный кабинет
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Пользователь</a>
+                                            <a class="dropdown-item" href="#">Сотрудник</a>
+                                            <a class="dropdown-item" href="#">Администратор</a>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a href="/logout" class="pull-right logout-button btn btn-success" role="button">Выйти</a>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                </header>
+            </div>
+            <div class="user-dashboard">
+                <h1>Электронный журнал</h1>
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                        <div class= "prisoner_id">
+                        <form class="form-inline">
+                            <label for="rg-from"><h2>ID Заключённого: </h2></label>
+                            <div class="form-group ">
+                                <input type="text" id="rg-from" name="rg-from" value="" class="form-control">
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+                        <div class="prisoner_id subject">
+                            <h2>Предмет</h2>
+                            <div class="btn-group">
+                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>Выбор предмета:</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Предмет 1</a>
+                                    <a class="dropdown-item" href="#">Предмет 2</a>
+                                    <a class="dropdown-item" href="#">Предмет 3</a>
+                                    <a class="dropdown-item" href="#">Предмет 4</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="container">
+                    <div class="prisoner_id mark-table">
+                    <script type="text/x-template" id="grid-template">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th v-for="key in columns"
+                                    @click="sortBy(key)"
+                                    :class="{ active: sortKey == key }">
+                                    {{ key }}
+                                    <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+                                    </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="entry in filteredData">
+                                    <td v-for="key in columns">
+                                        {{key}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </script>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js\usercabinet.js"></script>
+
+</body>
+
+</html>

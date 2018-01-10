@@ -11,8 +11,11 @@ module.exports = {
     about: (req, resp) => {
         resp.render('about');
     },
-    about: (req, resp) => {
+    gallery: (req, resp) => {
         resp.render('gallery');
+    },
+    usercabinet: (req, resp) => {
+        resp.render('usercabinet');
     }
 
 };

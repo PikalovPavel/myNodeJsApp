@@ -20,6 +20,8 @@ module.exports = (app, passport) => {
 
     app.get ('/about', isLoggedIn, authController.about);
 
-    app.get ('/gallery', isLoggedIn, authController.about);
+    app.get ('/gallery', isLoggedIn, authController.gallery);
+
+    app.get ('/usercabinet', isLoggedIn, authController.usercabinet);
 
 };
