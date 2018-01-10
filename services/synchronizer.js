@@ -29,20 +29,21 @@ const НОВОСТЬ = sequelize.import("../models/New.js");
 
 
 ТИП_КАМЕРЫ.hasMany(КАМЕРА,  {foreignKey: 'ТИП_КАМЕРЫ'});
-ЧЕЛОВЕК.hasOne(ЗАКЛЮЧЁННЫЙ, {foreignKey: 'ЧЕЛОВЕК_ИД'} );
 ЧЕЛОВЕК.hasOne(ПЕРСОНАЛ, {foreignKey: 'ЧЕЛОВЕК_ИД'} );
 ЧЕЛОВЕК.hasOne(УЧИТЕЛЬ, {foreignKey: 'УЧИТЕЛЬ_ИД'} );
 ЧЕЛОВЕК.hasMany(РОДСТВЕННАЯ_СВЯЗЬ, {foreignKey: 'РОДСТВЕННИК_ИД'} );
 ЧЕЛОВЕК.hasMany(ПОСЕЩЕНИЕ, {foreignKey: 'РОДСТВЕННИК_ИД'} );
 ЧЕЛОВЕК.hasMany(ДОСРОЧНОЕ, {foreignKey: 'РОДСТВЕННИК_ИД'} );
 СТАТЬЯ.hasMany(ЗАКЛЮЧЁННЫЙ,  {foreignKey: 'СТАТЬЯ'});
-ЗАКЛЮЧЁННЫЙ.hasMany(ЖУРНАЛ,  {foreignKey: 'ЗК_ИД'});
-ЗАКЛЮЧЁННЫЙ.hasMany(РОДСТВЕННАЯ_СВЯЗЬ,  {foreignKey: 'ЗК_ИД'});
-ЗАКЛЮЧЁННЫЙ.hasMany(ПОСЕЩЕНИЕ,  {foreignKey: 'ЗК_ИД'});
-ЗАКЛЮЧЁННЫЙ.hasMany(ДОСРОЧНОЕ,  {foreignKey: 'ЗК_ИД'});
+ЖУРНАЛ.belongsTo(ЗАКЛЮЧЁННЫЙ, {foreignKey:'ЧЕЛОВЕК_ИД',as:'prisoner_register'});
+ЗАКЛЮЧЁННЫЙ.belongsTo(ЧЕЛОВЕК, {foreignKey:'ЧЕЛОВЕК_ИД',as:'human_prisoner'});
+ЗАКЛЮЧЁННЫЙ.hasMany(РОДСТВЕННАЯ_СВЯЗЬ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
+ЗАКЛЮЧЁННЫЙ.hasMany(ПОСЕЩЕНИЕ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
+ЗАКЛЮЧЁННЫЙ.hasMany(ДОСРОЧНОЕ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
 ПРЕДМЕТ.hasMany(УЧИТЕЛЬ,  {foreignKey: 'ПРЕДМЕТ'});
 ПРЕДМЕТ.hasMany(ЖУРНАЛ, {foreignKey: 'ПРЕДМЕТ'});
-УЧИТЕЛЬ.hasMany(ЖУРНАЛ,  {foreignKey: 'УЧИТЕЛЬ_ИД'});
+УЧИТЕЛЬ.hasMany(ЖУРНАЛ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
+
 
 module.sequelize = sequelize;
 

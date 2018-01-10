@@ -29,14 +29,11 @@ module.exports = (app, synchronizer) => {
 
         }).then((user)=> {
             if (user) {
-                resp.redirect('/work'); }
-            else {
-                resp.render('main', {
-                    message: req.flash('error')
-                });
+                resp.redirect('/work');
             }
         });
     });
+
 
 
 
@@ -53,6 +50,39 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/register/:prId/:subId',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.ЖУРНАЛ.findOne ({
+            where : {
+                ЧЕЛОВЕК_ИД: req.params.prId,
+                ПРЕДМЕТ: req.params.subId
+            },
+            attributes: ['ЧЕЛОВЕК_ИД','КР1','КР2','КР3','КР4','ЛК'],
+            include: [
+                {
+                    model: synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,
+                    as: 'prisoner_register',
+                    attributes: {
+                        exclude: ['СТАТЬЯ','СРОК','ТИП_РАЦИОНА','ТИП_КАМЕРЫ','ШТРАФЫ','НОМЕР_КАМЕРЫ']
+                    },
+                   include: [
+                       {
+                           model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                           as: 'human_prisoner',
+                           attributes: {
+                               exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','Дата_Рождения','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                           }
+                       }
+
+                   ]
+                }
+            ]
+
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
+    });
 
     app.get('/api/leagues/:code', isLoggedIn, (req, resp) => {
         synchronizer.sequelize.models.League.findOne({
