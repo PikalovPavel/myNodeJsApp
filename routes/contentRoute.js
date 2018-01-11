@@ -24,4 +24,5 @@ module.exports = (app, passport) => {
 
     app.get ('/usercabinet', isLoggedIn, authController.usercabinet);
 
+
 };

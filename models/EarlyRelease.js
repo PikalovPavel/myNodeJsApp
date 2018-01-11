@@ -1,18 +1,20 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('ДОСРОЧНОЕ', {
+        ЗАЯВЛЕНИЕ_ИД:{
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         ЧЕЛОВЕК_ИД: {
             type: DataTypes.INTEGER,
-            primaryKey: true
-        },
-        РОДСТВЕННИК_ИД: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+
         },
         ТЕКСТ: {
             type: DataTypes.STRING
         },
         СТАТУС: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue:"FALSE"
         }
     }, {
         timestamps: false,

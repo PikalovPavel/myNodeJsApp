@@ -50,11 +50,24 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/user',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                user_id: req.user.user_id
+            },
+
+        }).then((userus)=> {
+            userus ?
+                resp.send(JSON.stringify(userus)) :
+                resp.send('{}');
+        });
+    });
+
     app.get('/api/register/:prId/:subId',isLoggedIn, (req, resp)=> {
         synchronizer.sequelize.models.ЖУРНАЛ.findOne ({
             where : {
                 ЧЕЛОВЕК_ИД: req.params.prId,
-                НАЗВАНИЕ: req.params.subId
+                ПРЕДМЕТ: req.params.subId
             },
             attributes: ['ЧЕЛОВЕК_ИД','КР1','КР2','КР3','КР4','ЛК'],
             include: [
@@ -94,6 +107,13 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+
+    app.post('/earlyRelease', isLoggedIn, (req, resp)=>{
+        synchronizer.sequelize.query("INSERT into ДОСРОЧНОЕ('ЧЕЛОВЕК_ИД','ТЕКСТ') VALUES ('"+req.user.user_id+"', '"+req.body.textdata+"')").spread((results,metadata)=>{
+
+        })
+    });
+
     app.get('/test/:id1/:id2', (req,resp)=>{
 
        synchronizer.sequelize.query("INSERT into ПРЕДМЕТ VALUES('"+req.params.id1+"', '"+req.params.id2.toString()+"')").spread((results, metadata) => {
@@ -101,6 +121,8 @@ module.exports = (app, synchronizer) => {
            console.log("error");
        });
     });
+
+
     app.get('/api/leagues/:code', isLoggedIn, (req, resp) => {
         synchronizer.sequelize.models.League.findOne({
             where: {
