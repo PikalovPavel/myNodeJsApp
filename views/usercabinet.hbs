@@ -12,7 +12,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
@@ -21,16 +20,21 @@
 
     <!-- Local stylesheet -->
     <link rel="stylesheet" href="css\global.css">
-    <link rel="stylesheet" href="css\main.css">
     <link rel="stylesheet" href="css\cabinet.css">
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue"></script>
-
 </head>
 
 <body class="home">
-<div class="container-fluid display-table" >
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="offcanvas"]').click(function () {
+            $("#navigation").toggleClass("hidden-xs");
+        });
+    });
+</script>
+<div class="container-fluid display-table">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
@@ -40,22 +44,28 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Обо мне</span></a></li>
-                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заявка на посещение</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заявка на досрочное</span></a></li>
-                    <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
+                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Обо мне</span></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заявка на посещение</span></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заявка на досрочное</span></a>
+                    </li>
+                    <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
                 </ul>
             </div>
         </div>
-        <div class="col-md-10 col-sm-11 display-table-cell v-align">
-            <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
-            <div class = "row">
+        <div class="display-table-cell v-align">
+            <div class="row">
                 <header>
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header" >
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -75,87 +85,72 @@
                                         <input type="text" class="form-control" placeholder="Search">
                                     </div>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button type="button" class="btn btn-success dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
                                             Личный кабинет
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Пользователь</a>
+                                            <a class="dropdown-item" href="/usercabinet">Пользователь</a>
                                             <a class="dropdown-item" href="#">Сотрудник</a>
                                             <a class="dropdown-item" href="#">Администратор</a>
                                         </div>
                                     </div>
                                 </form>
-                                <a href="/logout" class="pull-right logout-button btn btn-success" role="button">Выйти</a>
+                                <a href="/logout" class="pull-right logout-button btn btn-success"
+                                   role="button">Выйти</a>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
                     </nav>
                 </header>
             </div>
-            <div class="user-dashboard" id="app">
+            <div class="user-dashboard">
                 <h1>Электронный журнал</h1>
                 <div class="row">
-                    <div class="col-md-5 col-sm-5 col-xs-12 gutter">
-                        <div class= "prisoner_id">
-                        <form class="form-inline">
-                            <label for="rg-from"><h2>ID Заключённого: </h2></label>
-                            <div class="form-group ">
-                                <input type="text" id="rg-from" name="rg-from" value="" class="form-control">
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-
-                    <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-                        <div class="prisoner_id subject">
-                            <h2>Предмет</h2>
-                            <div class="btn-group">
-                                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span>Выбор предмета:</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Предмет 1</a>
-                                    <a class="dropdown-item" href="#">Предмет 2</a>
-                                    <a class="dropdown-item" href="#">Предмет 3</a>
-                                    <a class="dropdown-item" href="#">Предмет 4</a>
+                    <form>
+                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                            <div class="register">
+                                <div class="form-group">
+                                    <label for="prisonerID"><h2>ID Заключённого:</h2></label>
+                                    <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
+                                           placeholder="Введите ID заключённого">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                    <div class="container">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th scope="col">Имя</th>
-                                <th scope="col">Фамилия</th>
-                                <th scope="col">КР1</th>
-                                <th scope="col">КР2</th>
-                                <th scope="col">КР3</th>
-                                <th scope="col">КР4</th>
-                                <th scope="col">ЛК</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>\{{message.prisoner_register.human_prisoner['ИМЯ']}}</td>
-                                <td>\{{message.prisoner_register.human_prisoner['ФАМИЛИЯ']}}</td>
-                                <td>\{{message['КР1']}}</td>
-                                <td>\{{message['КР2']}}</td>
-                                <td>\{{message['КР3']}}</td>
-                                <td>\{{message['КР4']}}</td>
-                                <td>\{{message['ЛК']}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
+                        <div class="col-md-4 col-sm-4 col-xs-12 gutter">
+                            <div class="register">
+                                <div class="form-group">
+                                    <label for="subjectSelect"><h2>Выбор предмета:</h2></label>
+                                    <select class="form-control" id="subjectSelect">
+                                        <option>Предмет 1</option>
+                                        <option>Предмет 2</option>
+                                        <option>Предмет 3</option>
+                                        <option>Предмет 4</option>
+                                        <option>Предмет 5</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 gutter">
+                            <div class="register content-centered">
+                                <button type="submit" class="btn btn-success">Проверить успеваемость</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+                        <div class="register">
+                            <h2>Результаты: </h2>
+                            <!-- Сюда писать табличку -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-<script src="js\usercabinet.js"></script>
 
+    </div>
 
 </body>
-
 </html>
