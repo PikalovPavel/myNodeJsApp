@@ -22,7 +22,11 @@ module.exports = (app, passport) => {
 
     app.get ('/gallery', isLoggedIn, authController.gallery);
 
-    app.get ('/usercabinet', isLoggedIn, authController.usercabinet);
+    app.get ('/user-cabinet-register', isLoggedIn, authController.usercabinetregister);
+
+    app.get ('/user-cabinet-visit', isLoggedIn, authController.usercabinetvisit);
+
+    app.get ('/user-cabinet-release', isLoggedIn, authController.usercabinetrelease);
 
 
 };
