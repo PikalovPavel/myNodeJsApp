@@ -25,6 +25,7 @@
     <!-- Vue -->
     <script src="https://unpkg.com/vue"></script>
 
+
 </head>
 
 <body class="home">
@@ -107,11 +108,32 @@
             </div>
             <div class="user-dashboard">
                 <h1>Заключённые</h1>
-                <div class="row" >
+                <div class="row" id="appe" >
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
-                                <!-- Сюда таблицу заключённых -->
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Имя</th>
+                                        <th scope="col">Фамилия</th>
+                                        <th scope="col">Дата Рождения</th>
+                                        <th scope="col">Cтатья</th>
+                                        <th scope="col">Срок</th>
+                                        <th scope="col">Номер Камеры</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(prisoner) in messagee">
+                                        <td>\{{prisoner.human_prisoner['ИМЯ']}}</td>
+                                        <td>\{{prisoner.human_prisoner['ФАМИЛИЯ']}}</td>
+                                        <td>\{{prisoner.human_prisoner['Дата Рождения']}}</td>
+                                        <td>\{{prisoner['СТАТЬЯ']}}</td>
+                                        <td>\{{prisoner['СРОК']}}</td>
+                                        <td>\{{prisoner['НОМЕР_КАМЕРЫ']}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -121,6 +143,7 @@
     </div>
 </div>
 
+<script src="/js/admin-prisoners.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"

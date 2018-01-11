@@ -97,6 +97,26 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/allPrisoners',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ.findAll ({
+            attributes: ['ЧЕЛОВЕК_ИД','СТАТЬЯ','СРОК','НОМЕР_КАМЕРЫ'],
+            include: [
+                {
+                            model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                            as: 'human_prisoner',
+                            attributes: {
+                                exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                            }
+                        }
+            ]
+
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
+    });
+
     app.get('/api/subjects', isLoggedIn, (req, resp) => {
         synchronizer.sequelize.models.ПРЕДМЕТ.findAll({
             attributes: ['НАЗВАНИЕ']
