@@ -24,6 +24,7 @@
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue"></script>
+    <script src="/js/user-release.js"></script>
 </head>
 
 <body class="home">
@@ -107,7 +108,7 @@
             <div class="user-dashboard">
                 <h1>Заявка на досрочное</h1>
 
-                <form>
+
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                             <div class="register">
@@ -134,12 +135,13 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-xs-12 gutter">
                             <div class="register content-centered">
-                                <button type="submit" class="btn btn-success">Подать заявку</button>
+                                <button type="submit" class="btn btn-success" onclick="postRelease()">Подать заявку</button>
+                                <p id="result_text"></p>
                             </div>
                         </div>
                     </div>
                     <br>
-                </form>
+
 
             </div>
         </div>

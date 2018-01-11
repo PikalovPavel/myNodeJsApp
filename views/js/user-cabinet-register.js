@@ -1,13 +1,4 @@
 
-window.onload = function () {
-    var app = new Vue({
-        el: 'body',
-        data: {
-            messagee:""
-        }
-    });
-};
-
 
     function getRegister() {
     var register = {};

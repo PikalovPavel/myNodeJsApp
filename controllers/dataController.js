@@ -108,9 +108,19 @@ module.exports = (app, synchronizer) => {
     });
 
 
-    app.post('/earlyRelease', isLoggedIn, (req, resp)=>{
-        synchronizer.sequelize.query("INSERT into ДОСРОЧНОЕ('ЧЕЛОВЕК_ИД','ТЕКСТ') VALUES ('"+req.user.user_id+"', '"+req.body.textdata+"')").spread((results,metadata)=>{
+    app.post('/api/release', isLoggedIn, (req, resp)=>{
+        synchronizer.sequelize.query("INSERT into ДОСРОЧНОЕ(ЧЕЛОВЕК_ИД, ТЕКСТ) VALUES ('"+req.body.inpudId+"', '"+req.body.text+"')").spread((results,metadata)=>{
+            resp.send("true");
+        }).catch( function (err) {
+            resp.send("false");
+        })
+    });
 
+    app.post('/api/visit', isLoggedIn, (req, resp)=>{
+        synchronizer.sequelize.query("INSERT into ДОСРОЧНОЕ(ЧЕЛОВЕК_ИД, ТЕКСТ) VALUES ('"+req.body.inpudId+"', '"+req.body.text+"')").spread((results,metadata)=>{
+            resp.send("true");
+        }).catch( function (err) {
+            resp.send("false");
         })
     });
 
