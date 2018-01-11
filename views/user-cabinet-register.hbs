@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Red Sun Jail</title>
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <!-- Jquery for Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+
+    <!-- Local stylesheet -->
+    <link rel="stylesheet" href="css\global.css">
+    <link rel="stylesheet" href="css\cabinet.css">
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="/js/usercabinet.js"></script>
+
+</head>
+
+<body class="home">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="offcanvas"]').click(function () {
+            $("#navigation").toggleClass("hidden-xs");
+        });
+    });
+</script>
+<div class="container-fluid display-table">
+    <div class="row display-table-row">
+        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+            <div class="logo">
+                <a href="/main"><img src="img\logo.png" alt="red_sun_jail_logo" class="hidden-xs hidden-sm">
+                    <img src="img\logo.png" alt="red_sun_jail_logo" class="visible-xs visible-sm circle-logo">
+                </a>
+            </div>
+            <div class="navi">
+                <ul>
+                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Обо мне</span></a>
+                    </li>
+                    <li><a href="/user-cabinet-visit"><i class="fa fa-calendar" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заявка на посещение</span></a>
+                    </li>
+                    <li><a href="/user-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заявка на досрочное</span></a>
+                    </li>
+                    <li class="active"><a href="/user-cabinet-register"><i class="fa fa-tasks" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10 col-sm-11 display-table-cell v-align">
+            <div class="row">
+                <header>
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">
+                                    <img alt="Brand" class="header-logo" src="img\logo.png">
+                                </a>
+                            </div>
+
+                            <p class="navbar-text">Red Sun Jail</p>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <form class="navbar-form navbar-left">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                            Личный кабинет
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/user-cabinet">Пользователь</a>
+                                            <a class="dropdown-item" href="#">Сотрудник</a>
+                                            <a class="dropdown-item" href="#">Администратор</a>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a href="/logout" class="pull-right logout-button btn btn-success"
+                                   role="button">Выйти</a>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                </header>
+            </div>
+            <div class="user-dashboard">
+                <h1>Электронный журнал</h1>
+                <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                            <div class="register">
+                                <div class="form-group">
+                                    <label for="prisonerID"><h2>ID Заключённого:</h2></label>
+                                    <input type="text" class="form-control" name="prisonerId" id="prisonerID" aria-describedby="IDHelp"
+                                           placeholder="Введите ID заключённого">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 gutter">
+                            <div class="register">
+                                <div class="form-group">
+                                    <label for="subjectSelect"><h2>Выбор предмета:</h2></label>
+                                    <select class="form-control" name="year" id="subjectSelect">
+                                        <option value="0">Математика</option>
+                                        <option value="1"  >Русский</option>
+                                        <option value="2" >Литература</option>
+                                        <option value="3"  >Религия</option>
+                                        <option value="4" >Изо</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-3 col-xs-12 gutter">
+                            <div class="register content-centered">
+                                <button type="submit" class="btn btn-success" onclick="getRegister()">Проверить успеваемость</button>
+                            </div>
+                        </div>
+
+                </div>
+                <br>
+                <div class="row" >
+                    <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+                        <div class="register">
+                            <h2>Результаты: </h2>
+                            <div class="container">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Имя</th>
+                                        <th scope="col">Фамилия</th>
+                                        <th scope="col">КР1</th>
+                                        <th scope="col">КР2</th>
+                                        <th scope="col">КР3</th>
+                                        <th scope="col">КР4</th>
+                                        <th scope="col">ЛК</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>\{{message.prisoner_register.human_prisoner['ИМЯ']}}</td>
+                                        <td>\{{message.prisoner_register.human_prisoner['ФАМИЛИЯ']}}</td>
+                                        <td>\{{message['КР1']}}</td>
+                                        <td>\{{message['КР2']}}</td>
+                                        <td>\{{message['КР3']}}</td>
+                                        <td>\{{message['КР4']}}</td>
+                                        <td>\{{message['ЛК']}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+</body>
+</html>

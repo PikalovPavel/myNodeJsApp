@@ -17,28 +17,20 @@
 
     <!-- Jquery for Bootstrap -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
     <!-- Local stylesheet -->
     <link rel="stylesheet" href="css\global.css">
     <link rel="stylesheet" href="css\cabinet.css">
+    <link rel="stylesheet" href="css\bootstrap-datepicker3.css">
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue"></script>
-    <script src="/js/usercabinet.js"></script>
-
 </head>
 
 <body class="home">
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('[data-toggle="offcanvas"]').click(function () {
-            $("#navigation").toggleClass("hidden-xs");
-        });
-    });
-</script>
-<div class="container-fluid display-table " id="appe" >
+<script src="js\bootstrap-datepicker.js"></script>
+<script src="js\bootstrap-datepicker.ru.min.js"></script>
+<div class="container-fluid display-table">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
@@ -50,19 +42,18 @@
                 <ul>
                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Обо мне</span></a>
                     </li>
-                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span
+                    <li class="active"><a href="/user-cabinet-visit"><i class="fa fa-calendar" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Заявка на посещение</span></a>
                     </li>
-                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span
+                    <li><a href="/user-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Заявка на досрочное</span></a>
                     </li>
-                    <li class="active"><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span
+                    <li><a href="/user-cabinet-register"><i class="fa fa-tasks" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
                 </ul>
             </div>
         </div>
-
-        <div class="display-table-cell v-align">
+        <div class="col-md-10 col-sm-11 display-table-cell v-align">
             <div class="row">
                 <header>
                     <nav class="navbar navbar-default">
@@ -96,7 +87,7 @@
                                             Личный кабинет
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/usercabinet">Пользователь</a>
+                                            <a class="dropdown-item" href="/user-cabinet-register">Пользователь</a>
                                             <a class="dropdown-item" href="#">Сотрудник</a>
                                             <a class="dropdown-item" href="#">Администратор</a>
                                         </div>
@@ -110,78 +101,62 @@
                 </header>
             </div>
             <div class="user-dashboard">
-                <h1>Электронный журнал</h1>
+                <h1>Заявка на посещение</h1>
                 <div class="row">
+                    <form>
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                             <div class="register">
                                 <div class="form-group">
                                     <label for="prisonerID"><h2>ID Заключённого:</h2></label>
-                                    <input type="text" class="form-control" name="prisonerId" id="prisonerID" aria-describedby="IDHelp"
+                                    <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
                                            placeholder="Введите ID заключённого">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 gutter">
-                            <div class="register">
+                            <div class="register content-centered" id="sandbox-container">
                                 <div class="form-group">
-                                    <label for="subjectSelect"><h2>Выбор предмета:</h2></label>
-                                    <select class="form-control" name="year" id="subjectSelect">
-                                        <option value="0">Математика</option>
-                                        <option value="1"  >Русский</option>
-                                        <option value="2" >Литература</option>
-                                        <option value="3"  >Религия</option>
-                                        <option value="4" >Изо</option>
-                                    </select>
-
+                                    <label for="datepicker"><h2>Выберите дату:</h2></label>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text"  class="form-control" id="datepicker"><span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                                        <script type="text/javascript">
+                                            $('#sandbox-container .input-group.date').datepicker({
+                                                format: "dd/mm/yy",
+                                                weekStart: 1,
+                                                maxViewMode: 2,
+                                                clearBtn: true,
+                                                language: "ru"
+                                            });
+                                        </script>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-3 col-sm-3 col-xs-12 gutter">
                             <div class="register content-centered">
-                                <button type="submit" class="btn btn-success" onclick="getRegister()">Проверить успеваемость</button>
+                                <button type="submit" class="btn btn-success">Подать заявку</button>
                             </div>
                         </div>
-
-                </div>
-                <br>
-                <div class="row" >
-                    <div class="col-md-12 col-sm-12 col-xs-12 gutter">
-                        <div class="register">
-                            <h2>Результаты: </h2>
-                            <div class="container">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Имя</th>
-                                        <th scope="col">Фамилия</th>
-                                        <th scope="col">КР1</th>
-                                        <th scope="col">КР2</th>
-                                        <th scope="col">КР3</th>
-                                        <th scope="col">КР4</th>
-                                        <th scope="col">ЛК</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>\{{message.prisoner_register.human_prisoner['ИМЯ']}}</td>
-                                        <td>\{{message.prisoner_register.human_prisoner['ФАМИЛИЯ']}}</td>
-                                        <td>\{{message['КР1']}}</td>
-                                        <td>\{{message['КР2']}}</td>
-                                        <td>\{{message['КР3']}}</td>
-                                        <td>\{{message['КР4']}}</td>
-                                        <td>\{{message['ЛК']}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="offcanvas"]').click(function () {
+            $("#navigation").toggleClass("hidden-xs");
+        });
+    });
+</script>
 </body>
 </html>
