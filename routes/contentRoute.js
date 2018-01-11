@@ -28,5 +28,13 @@ module.exports = (app, passport) => {
 
     app.get ('/user-cabinet-release', isLoggedIn, authController.usercabinetrelease);
 
+    app.get ('/admin-cabinet-prisoners', isLoggedIn, authController.admincabinetprisoners);
+
+    app.get ('/admin-cabinet-workers', isLoggedIn, authController.admincabinetworkers);
+
+    app.get ('/admin-cabinet-visit', isLoggedIn, authController.admincabinetvisit);
+
+    app.get ('/admin-cabinet-release', isLoggedIn, authController.admincabinetrelease);
+
 
 };

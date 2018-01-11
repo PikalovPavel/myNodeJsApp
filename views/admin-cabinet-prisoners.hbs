@@ -21,15 +21,20 @@
     <!-- Local stylesheet -->
     <link rel="stylesheet" href="css\global.css">
     <link rel="stylesheet" href="css\cabinet.css">
-    <link rel="stylesheet" href="css\bootstrap-datepicker3.css">
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue"></script>
+
 </head>
 
 <body class="home">
-<script src="js\bootstrap-datepicker.js"></script>
-<script src="js\bootstrap-datepicker.ru.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="offcanvas"]').click(function () {
+            $("#navigation").toggleClass("hidden-xs");
+        });
+    });
+</script>
 <div class="container-fluid display-table">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
@@ -40,14 +45,16 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="/user-cabinet-visit"><i class="fa fa-calendar" aria-hidden="true"></i><span
-                            class="hidden-xs hidden-sm">Заявка на посещение</span></a>
+                    <li class="active"><a href="/admin-cabinet-prisoners"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заключённые</span></a>
                     </li>
-                    <li><a href="/user-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
-                            class="hidden-xs hidden-sm">Заявка на досрочное</span></a>
+                    <li><a href="/admin-cabinet-workers"><i class="fa fa-user" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Работники</span></a>
                     </li>
-                    <li><a href="/user-cabinet-register"><i class="fa fa-tasks" aria-hidden="true"></i><span
-                            class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
+                    <li><a href="/admin-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заявки на досрочное</span></a>
+                    </li>
+                    <li><a href="/admin-cabinet-visit"><i class="fa fa-envelope" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заявки на посещение</span></a></li>
                 </ul>
             </div>
         </div>
@@ -85,7 +92,7 @@
                                             Личный кабинет
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/user-cabinet-register">Пользователь</a>
+                                            <a class="dropdown-item" href="/user-cabinet">Пользователь</a>
                                             <a class="dropdown-item" href="#">Сотрудник</a>
                                             <a class="dropdown-item" href="#">Администратор</a>
                                         </div>
@@ -99,41 +106,15 @@
                 </header>
             </div>
             <div class="user-dashboard">
-                <h1>Заявка на посещение</h1>
-                <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
-                            <div class="register">
-                                <div class="form-group">
-                                    <label for="prisonerID"><h2>ID Заключённого:</h2></label>
-                                    <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
-                                           placeholder="Введите ID заключённого">
-                                </div>
+                <h1>Заключённые</h1>
+                <div class="row" >
+                    <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="container">
+                                <!-- Сюда таблицу заключённых -->
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 gutter">
-                            <div class="register content-centered" id="sandbox-container">
-                                <div class="form-group">
-                                    <label for="datepicker"><h2>Выберите дату:</h2></label>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <input type="text"  class="form-control" id="datepicker"><span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
-                                        <script type="text/javascript">
-                                            $('#sandbox-container .input-group.date').datepicker({
-                                                format: "dd/mm/yy",
-                                                weekStart: 1,
-                                                maxViewMode: 2,
-                                                clearBtn: true,
-                                                language: "ru"
-                                            });
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 gutter">
-                            <div class="register content-centered">
-                                <button type="submit" class="btn btn-success" onclick="postVisit()">Подать заявку</button>
-                            </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,12 +128,5 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('[data-toggle="offcanvas"]').click(function () {
-            $("#navigation").toggleClass("hidden-xs");
-        });
-    });
-</script>
 </body>
 </html>
