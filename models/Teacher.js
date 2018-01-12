@@ -5,7 +5,8 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true
         },
         ПРЕДМЕТ_ИД: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            primaryKey: true
         },
         БЛОК: {
             type: DataTypes.STRING

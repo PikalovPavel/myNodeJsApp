@@ -137,7 +137,6 @@
                                     <tr>
                                         <th scope="col">Имя</th>
                                         <th scope="col">Фамилия</th>
-                                        <th scope="col">Дата Рождения</th>
                                         <th scope="col">Преподаваемый предмет</th>
                                     </tr>
                                     </thead>
@@ -145,7 +144,6 @@
                                     <tr v-for="(prisoner) in teacher">
                                         <td>\{{prisoner.human_teacher['ИМЯ']}}</td>
                                         <td>\{{prisoner.human_teacher['ФАМИЛИЯ']}}</td>
-                                        <td>\{{prisoner.human_teacher['Дата_Рождения']}}</td>
                                         <td>\{{prisoner.subject_teacher['НАЗВАНИЕ']}}</td>
                                     </tr>
                                     </tbody>
