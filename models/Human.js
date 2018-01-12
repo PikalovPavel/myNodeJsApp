@@ -28,10 +28,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull:false
         },
-        ПАРОЛЬ: {
+        РАЦИОН: {
             type: DataTypes.STRING,
             allowNull:true
         },
+
     }, {
         timestamps: false,
         freezeTableName: true

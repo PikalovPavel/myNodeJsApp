@@ -28,18 +28,19 @@ function postMarks() {
     let kr1 = $( "#kr1 option:selected" ).val();
     let kr1Int = parseInt(kr1,10);
     let kr2 = $( "#kr2 option:selected" ).val();
-    let kr2Int = parseInt(number,10);
+    let kr2Int = parseInt(kr2,10);
     let kr3 = $( "#kr3 option:selected" ).val();
-    let kr3Int = parseInt(number,10);
+    let kr3Int = parseInt(kr3,10);
     let kr4 = $( "#kr4 option:selected" ).val();
-    let kr4Int = parseInt(number,10);
+    let kr4Int = parseInt(kr4,10);
     let lk = $( "#kr4 option:selected" ).val();
-    let lkInt = parseInt(number,10);
+    let lkInt = parseInt(lk,10);
     if (!isNaN(inputId)&&!isNaN(kr1Int)&&!isNaN(kr2Int)&&!isNaN(kr3Int)&&!isNaN(kr4Int)&&!isNaN(lkInt)) {
 
         var data = {};
         if (include(prisoners,inputId)) {
             data.inpudId=inputId;
+            data.subject=subjectInt;
             data.kr1=kr1Int;
             data.kr2=kr2Int;
             data.kr3=kr3Int;
@@ -54,10 +55,10 @@ function postMarks() {
                 success: function (data) {
                     console.log(data);
                     var result;
-                    if (data=="true") {
+                    if (data) {
                         $("#result_text").text("Вы успешно поставили оценки!");
                     }
-                    else if(data==="false") {
+                    else if(!data) {
                         $("#result_text").text("Оценки не были поставлены");
                     }
 
