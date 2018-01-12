@@ -1,5 +1,4 @@
 
-
 function postRelease() {
     if (inputText!==null) {
 
@@ -31,3 +30,4 @@ function postRelease() {
         }
 
     }
+

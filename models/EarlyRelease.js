@@ -13,8 +13,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         СТАТУС: {
-            type: DataTypes.STRING,
-            defaultValue:"FALSE"
+            type: DataTypes.BOOLEAN,
+            defaultValue:false
         }
     }, {
         timestamps: false,

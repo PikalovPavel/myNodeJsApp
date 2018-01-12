@@ -24,6 +24,7 @@
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue"></script>
+    <script src="/js/admin-send-release.js"></script>
 </head>
 
 <body class="home">
@@ -104,13 +105,71 @@
                     </nav>
                 </header>
             </div>
-            <div class="user-dashboard">
+            <script>
+                function sendToUserRelease () {
+                    var map = {};
+                    $(".checkboxe").each(function() {
+                        map[$(this).attr("id")] = $(this).is(':checked');
+                    });
+
+                   for (var key in map) {
+                      if(map[key]) map[key]="TRUE"; else map[key]="FALSE";
+                      console.log(map[key])
+                   }
+                    $.ajax({
+                        url : '/api/setRelease',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(map),
+                        success: function (data) {
+                            console.log(data);
+                            var result;
+                            if (data=="true") {
+                                alert("true");
+                                $("#result_text").text("Все было успешно добавлено!");
+                            }
+                            else if(data==="false") {
+                                $("#result_text").text("Заключенного с id = "+inputId+" не существует. Обратитесь к администратору за нужным ID.");
+                                alert("false");
+                            }
+
+                        }
+
+                    });
+                }
+            
+            </script>
+            <div class="user-dashboard" id="appe">
                 <h1>Заявки на досрочное:</h1>
                 <div class="row" >
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
-                                <!-- Сюда таблицу заявок на посещение -->
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Фамилия заключенного</th>
+                                        <th scope="col">Имя заключенного</th>
+                                        <th scope="col">Текст</th>
+                                        <th scope="col">Одобрено</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="(prisoner) in messagee" >
+                                        <td>\{{prisoner.release_prisoner.human_prisoner['ИМЯ']}}</td>
+                                        <td>\{{prisoner.release_prisoner.human_prisoner['ФАМИЛИЯ']}}</td>
+                                        <td>\{{prisoner['ТЕКСТ']}}</td>
+                                        <td>
+                                        <div v-if="prisoner['СТАТУС']">
+                                            <input class="checkboxe" type="checkbox"  v-bind:id="prisoner['ЗАЯВЛЕНИЕ_ИД']" checked/>
+                                        </div>
+                                            <div v-else>
+                                                <input class="checkboxe" type="checkbox"  v-bind:id="prisoner['ЗАЯВЛЕНИЕ_ИД']" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -119,7 +178,8 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-12 gutter">
                         <div class="register content-centered">
-                            <button type="submit" class="btn btn-success">Применить изменения</button>
+                            <button type="submit" class="btn btn-success" onclick="sendToUserRelease()">Применить изменения</button>
+                            <p id="result_text"></p>
                         </div>
                     </div>
                 </div>
@@ -134,6 +194,7 @@
         crossorigin="anonymous"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="/js/admin-release.js"></script>
 
 </body>
 </html>

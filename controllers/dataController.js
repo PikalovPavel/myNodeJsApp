@@ -137,6 +137,35 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/allReleas',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.ДОСРОЧНОЕ.findAll ({
+            attributes: ['ЧЕЛОВЕК_ИД','ТЕКСТ','СТАТУС', 'ЗАЯВЛЕНИЕ_ИД'],
+            include: [
+                {
+                    model:synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,
+                    as: 'release_prisoner',
+                    attributes: {
+                        exclude: ['ОТЧЕСТВО','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                    },
+                    include: [
+                        {
+                            model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                            as: 'human_prisoner',
+                            attributes: {
+                                exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','Дата_Рождения','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                            }
+                        }
+
+                    ]
+                }
+            ]
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
+    });
+
     app.get('/api/allTeachers',isLoggedIn, (req, resp)=> {
         synchronizer.sequelize.models.УЧИТЕЛЬ.findAll ({
             attributes: ['ЧЕЛОВЕК_ИД','ПРЕДМЕТ_ИД'],
@@ -176,8 +205,22 @@ module.exports = (app, synchronizer) => {
         synchronizer.sequelize.query("INSERT into ДОСРОЧНОЕ(ЧЕЛОВЕК_ИД, ТЕКСТ) VALUES ('"+req.body.inpudId+"', '"+req.body.text+"')").spread((results,metadata)=>{
             resp.send("true");
         }).catch( function (err) {
+            console.log(err);
             resp.send("false");
         })
+    });
+
+    app.post('/api/setRelease', isLoggedIn, (req, resp)=>{
+        var mydata = req.body;
+        var res;
+        for (key in mydata) {
+            synchronizer.sequelize.query("UPDATE ДОСРОЧНОЕ SET СТАТУС = "+mydata[key]+" WHERE ЗАЯВЛЕНИЕ_ИД = "+key+"").spread((results, metadata) => {
+               res="true";
+            }).catch(function (err) {
+                res="false";
+            })
+        }
+        resp.send(res);
     });
 
     app.post('/api/visit', isLoggedIn, (req, resp)=>{
