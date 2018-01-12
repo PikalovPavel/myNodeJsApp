@@ -168,6 +168,13 @@ header {
     margin-top: 10px;
 }
 
+.thead-light {
+    background-color: #8cde6e;
+}
+
+.table{
+    word-break: break-all;
+}
 .navbar-default {
     background-color: #8cde6e;
     background-image: none;

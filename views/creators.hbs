@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Red Sun Jail</title>
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <!-- Jquery for Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Local stylesheet -->
+    <link rel="stylesheet" href="css\global.css">
+    <link rel="stylesheet" href="css\main.css">
+    <link rel="stylesheet" href="css\social-buttons.css">
+    <link rel="stylesheet" href="css\creators.css">
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" class="header-logo" src="img\logo.png">
+                    </a>
+                </div>
+
+                <p class="navbar-text">Red Sun Jail</p>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                Личный кабинет
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/user-cabinet-visit">Пользователь</a>
+                                <a class="dropdown-item" href="/worker-cabinet-register">Сотрудник</a>
+                                <a class="dropdown-item" href="/admin-cabinet-prisoners">Администратор</a>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+
+    <main>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/main">О нас</a></li>
+            <li role="presentation"><a href="/gallery">Галерея</a></li>
+            <li role="presentation" class="active"><a href="/creators">О создателях</a></li>
+        </ul>
+
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
+            <div class="card hovercard">
+                <div class="card-background">
+                    <img class="card-bkimg" alt="" src="img\pasha.jpg">
+                </div>
+                <div class="useravatar">
+                    <img alt="" src="img\pasha.jpg">
+                </div>
+                <div class="card-info"><span class="card-title">Pavel Pikalov</span>
+                </div>
+            </div>
+            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="stars" class="btn btn-success" href="#tab1" data-toggle="tab"><span
+                            class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <div class="hidden-xs">Overview</div>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span
+                            class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        <div class="hidden-xs">Bio</div>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab"><span
+                            class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                        <div class="hidden-xs">Social</div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="well">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1">
+                        <h3>Pavel Pikalov</h3>
+                        <h4>Main back-end developer</h4>
+                        <small><cite title="San Francisco, USA">St. Petersburg, Russia <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>IILaughYouDie@gmail.com
+                            <br />
+                            <i class="glyphicon glyphicon-phone"></i>89197052289
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 12, 1998</p>
+                    </div>
+                    <div class="tab-pane fade in" id="tab2">
+                        <h3>
+                            <!--Сюда пишешь свою биографию-->
+                        </h3>
+                    </div>
+                    <div class="tab-pane fade in" id="tab3">
+                        <h3>Social Links:</h3>
+                        <a target="_blank" href="https://vk.com/id102129119" class="btn btn-block btn-social btn-vk">
+                            <span class="fa fa-vk"></span>
+                            VK
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/pavelpikalov/" class="btn btn-block btn-social btn-instagram">
+                            <span class="fa fa-instagram"></span>
+                            Instagram
+                        </a>
+                        <a target="_blank" href="https://github.com/PikalovPavel" class="btn btn-block btn-social btn-github">
+                            <span class="fa fa-github"></span>
+                            GitHub
+                        </a>
+                        <a target="_blank" href="https://vk.com/pashasmeme" class="btn btn-block btn-social btn-vk">
+                            <span class="fa fa-vk"></span>
+                            Top memes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
+            <div class="card hovercard">
+                <div class="card-background">
+                    <img class="card-bkimg" alt="" src="img\vova.jpg">
+                </div>
+                <div class="useravatar">
+                    <img alt="" src="img\vova.jpg">
+                </div>
+                <div class="card-info"><span class="card-title">Vladimir Smirnov</span>
+
+                </div>
+            </div>
+            <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" id="stars" class="btn btn-success" href="#tab4" data-toggle="tab"><span
+                            class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <div class="hidden-xs">Overview</div>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="favorites" class="btn btn-default" href="#tab5" data-toggle="tab"><span
+                            class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        <div class="hidden-xs">Bio</div>
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" id="following" class="btn btn-default" href="#tab6" data-toggle="tab"><span
+                            class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                        <div class="hidden-xs">Social</div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="well">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab4">
+                        <h3>Vladimir Smirnov</h3>
+                        <h4>Main front-end developer</h4>
+                        <small><cite title="San Francisco, USA">St. Petersburg, Russia <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>smirnov.com84@gmail.com
+                            <br />
+                            <i class="glyphicon glyphicon-phone"></i>89095891173
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>April 12, 1998</p>
+                    </div>
+                    <div class="tab-pane fade in" id="tab5">
+                        <h3>Education:</h3>
+                        <h4>
+                            2013-2015 - NIS Intellectual School, Pavlodar.
+                        </h4>
+                        <h4>
+                            2016 - ITMO University, St. Petersburg.
+                        </h4>
+                        <h3>Career:</h3>
+                        <h4>2017 - Chayka Children Camp</h4>
+                        <h4>2017 - Red Sun Jail for children</h4>
+                    </div>
+                    <div class="tab-pane fade in" id="tab6">
+                        <h3>Social Links:</h3>
+                        <a target="_blank" href="https://vk.com/id211690826" class="btn btn-block btn-social btn-vk">
+                            <span class="fa fa-vk"></span>
+                            VK
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/smirnoff.vladimir/" class="btn btn-block btn-social btn-instagram">
+                            <span class="fa fa-instagram"></span>
+                            Instagram
+                        </a>
+                        <a target="_blank" href="https://github.com/TruePac" class="btn btn-block btn-social btn-github">
+                            <span class="fa fa-github"></span>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".btn-pref .btn").click(function () {
+                    $(".btn-pref .btn").removeClass("btn-success").addClass("btn-default");
+                    // $(".tab").addClass("active"); // instead of this do the below
+                    $(this).removeClass("btn-default").addClass("btn-success");
+                });
+            });
+        </script>
+
+    </main>
+
+    <footer>
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Наверх</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Личный кабинет</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</div>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</body>
+
+</html>

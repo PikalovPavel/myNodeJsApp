@@ -22,6 +22,8 @@ module.exports = (app, passport) => {
 
     app.get ('/gallery', isLoggedIn, authController.gallery);
 
+    app.get ('/creators', isLoggedIn, authController.creators);
+
     app.get ('/user-cabinet-register', isLoggedIn, authController.usercabinetregister);
 
     app.get ('/user-cabinet-visit', isLoggedIn, authController.usercabinetvisit);

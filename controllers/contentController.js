@@ -14,6 +14,9 @@ module.exports = {
     gallery: (req, resp) => {
         resp.render('gallery');
     },
+    creators: (req, resp) => {
+        resp.render('creators');
+    },
     usercabinetregister: (req, resp) => {
         resp.render('user-cabinet-register');
     },

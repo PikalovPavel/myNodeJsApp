@@ -45,9 +45,11 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li><a href="/admin-cabinet-prisoners"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заключённые</span></a>
+                    <li><a href="/admin-cabinet-prisoners"><i class="fa fa-user" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заключённые</span></a>
                     </li>
-                    <li class="active"><a href="/admin-cabinet-workers"><i class="fa fa-user" aria-hidden="true"></i><span
+                    <li class="active"><a href="/admin-cabinet-workers"><i class="fa fa-user"
+                                                                           aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Работники</span></a>
                     </li>
                     <li><a href="/admin-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
@@ -92,9 +94,9 @@
                                             Личный кабинет
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/user-cabinet">Пользователь</a>
-                                            <a class="dropdown-item" href="#">Сотрудник</a>
-                                            <a class="dropdown-item" href="#">Администратор</a>
+                                            <a class="dropdown-item" href="/user-cabinet-visit">Пользователь</a>
+                                            <a class="dropdown-item" href="/worker-cabinet-register">Сотрудник</a>
+                                            <a class="dropdown-item" href="/admin-cabinet-prisoners">Администратор</a>
                                         </div>
                                     </div>
                                 </form>
@@ -111,8 +113,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
-                                <table>
-                                    <thead>
+                                <table class="table table-hover table-bordered">
+                                    <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Имя</th>
                                         <th scope="col">Фамилия</th>
@@ -131,9 +133,18 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <p>Учителя</p>
-                                <table>
-                                    <thead>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <h1>Учителя</h1>
+                <div class="row" id="appe">
+                    <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="container">
+                                <table class="table table-hover table-bordered">
+                                    <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Имя</th>
                                         <th scope="col">Фамилия</th>

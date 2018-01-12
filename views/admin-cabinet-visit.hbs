@@ -104,65 +104,13 @@
                     </nav>
                 </header>
             </div>
-            <script>
-                function sendToUserVisit () {
-                    var map = {};
-                    $(".checkboxe").each(function() {
-                        map[$(this).attr("id")] = $(this).is(':checked');
-                    });
-
-                    $.ajax({
-                        url : '/api/setVisit',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify(map),
-                        success: function (data) {
-                            console.log(data);
-                            if (data==="true") {
-                                $("#result_text").text("Все было успешно добавлено!");
-                            }
-                            else if(data==="false") {
-                                $("#result_text").text("Что-то пошло не так");
-                            }
-
-                        }
-
-                    });
-                }
-
-            </script>
-            <div class="user-dashboard" id="appe">
+            <div class="user-dashboard">
                 <h1>Заявки на посещение:</h1>
                 <div class="row" >
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Родственник</th>
-                                        <th scope="col">Заключённый</th>
-                                        <th scope="col">Дата</th>
-                                        <th scope="col">Одобрено</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="(prisoner) in messagee" >
-                                        <td>\{{prisoner.visit_user.username}}</td>
-                                        <td>\{{prisoner.visit_prisoner.human_prisoner['ИМЯ']}}</td>
-                                        <td>\{{prisoner.visit_prisoner.human_prisoner['ФАМЛИЯ']}}</td>
-                                        <td>\{{prisoner['ДАТА_ПОСЕЩЕНИЯ']}}</td>
-                                        <td>
-                                            <div v-if="prisoner['СТАТУС']">
-                                                <input class="checkboxe" type="checkbox"  v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']" checked/>
-                                            </div>
-                                            <div v-else>
-                                                <input class="checkboxe" type="checkbox"  v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']" />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <!-- Сюда таблицу заявок на посещение -->
                             </div>
                         </div>
                     </div>
@@ -171,8 +119,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-12 gutter">
                         <div class="register content-centered">
-                            <button type="submit" class="btn btn-success" onclick="sendToUserVisit()">Применить изменения</button>
-                            <p id="result_text"></p>
+                            <button type="submit" class="btn btn-success">Применить изменения</button>
                         </div>
                     </div>
                 </div>
@@ -180,7 +127,7 @@
         </div>
     </div>
 </div>
-<script src="/js/admin-visit.js"></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
