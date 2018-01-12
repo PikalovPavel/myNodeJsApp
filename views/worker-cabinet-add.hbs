@@ -107,9 +107,18 @@
                     <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                         <div class="register">
                             <div class="form-group">
+                                <script>
+                                    function checkCurr(d) {
+                                        if(window.event)
+                                        {
+                                            if(event.keyCode == 37 || event.keyCode == 39) return;
+                                        }
+                                        d.value = d.value.replace(/\D/g,'');
+                                    }
+                                </script>
                                 <label for="prisonerID"><h2>ID Заключённого:</h2></label>
                                 <input type="text" class="form-control" name="prisonerId" id="prisonerID" aria-describedby="IDHelp"
-                                       placeholder="Введите ID заключённого">
+                                       placeholder="Введите ID заключённого" onkeyup="checkCurr(this)">
                             </div>
                         </div>
                     </div>
@@ -134,7 +143,7 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="subjectSelect"><h2>КР1:</h2></label>
-                                <select class="form-control" name="year" id="subjectSelect">
+                                <select class="form-control" name="year" id="kr1">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"  >2</option>
@@ -149,7 +158,7 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="subjectSelect"><h2>КР2:</h2></label>
-                                <select class="form-control" name="year" id="subjectSelect">
+                                <select class="form-control" name="year" id="kr2">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"  >2</option>
@@ -164,7 +173,7 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="subjectSelect"><h2>КР3:</h2></label>
-                                <select class="form-control" name="year" id="subjectSelect">
+                                <select class="form-control" name="year" id="kr3">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"  >2</option>
@@ -179,7 +188,7 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="subjectSelect"><h2>КР4:</h2></label>
-                                <select class="form-control" name="year" id="subjectSelect">
+                                <select class="form-control" name="year" id="kr4">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"  >2</option>
@@ -194,7 +203,7 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="subjectSelect"><h2>ЛК:</h2></label>
-                                <select class="form-control" name="year" id="subjectSelect">
+                                <select class="form-control" name="year" id="lk">
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2"  >2</option>
@@ -210,7 +219,8 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-12 gutter">
                         <div class="register content-centered">
-                            <button type="submit" class="btn btn-success">Проставить оценки</button>
+                            <button type="submit" class="btn btn-success" onclick="postMarks()">Проставить оценки</button>
+                            <p id="result_text"></p>
                         </div>
                     </div>
                 </div>

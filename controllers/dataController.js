@@ -234,6 +234,18 @@ module.exports = (app, synchronizer) => {
         resp.send(res);
     });
 
+    app.post('/api/setMarks', isLoggedIn, (req, resp)=>{
+        var mydata = req.body;
+        var res="true";
+        for (key in mydata) {
+            synchronizer.sequelize.query("UPDATE ДОСРОЧНОЕ SET СТАТУС = "+mydata[key]+" WHERE ЗАЯВЛЕНИЕ_ИД = "+key+"").spread((results, metadata) => {
+            }).catch(function (err) {
+                res="false";
+            })
+        }
+        resp.send(res);
+    });
+
     app.post('/api/setVisit', isLoggedIn, (req, resp)=>{
         var mydata = req.body;
         var res="true";
@@ -251,6 +263,7 @@ module.exports = (app, synchronizer) => {
         synchronizer.sequelize.query("INSERT into ПОСЕЩЕНИЕ(ЧЕЛОВЕК_ИД, user_id , ДАТА_ПОСЕЩЕНИЯ) VALUES ('"+req.body.inpudId+"', '"+req.user.user_id+"', '"+date+"')").spread((results,metadata)=>{
             resp.send("true");
         }).catch( function (err) {
+            console.log(err);
             resp.send("false");
         })
     });
