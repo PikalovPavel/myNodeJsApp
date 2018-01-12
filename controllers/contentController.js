@@ -26,6 +26,9 @@ module.exports = {
     usercabinetrelease: (req, resp) => {
         resp.render('user-cabinet-release');
     },
+    usercabinetrequests: (req, resp) => {
+        resp.render('user-cabinet-requests');
+    },
     admincabinetprisoners: (req, resp) => {
         resp.render('admin-cabinet-prisoners');
     },
@@ -38,11 +41,20 @@ module.exports = {
     admincabinetrelease: (req, resp) => {
         resp.render('admin-cabinet-release');
     },
+    admincabinetmap: (req, resp) => {
+        resp.render('admin-cabinet-map');
+    },
     workercabinetregister: (req, resp) => {
         resp.render('worker-cabinet-register');
     },
     workercabinetadd: (req, resp) => {
         resp.render('worker-cabinet-add');
+    },
+    workercabinetmap: (req, resp) => {
+        resp.render('worker-cabinet-map');
+    },
+    comingsoon: (req, resp) => {
+        resp.render('comingsoon');
     }
 
 

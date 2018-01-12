@@ -30,6 +30,8 @@ module.exports = (app, passport) => {
 
     app.get ('/user-cabinet-release', isLoggedIn, authController.usercabinetrelease);
 
+    app.get ('/user-cabinet-requests', isLoggedIn, authController.usercabinetrequests);
+
     app.get ('/admin-cabinet-prisoners', isLoggedIn, authController.admincabinetprisoners);
 
     app.get ('/admin-cabinet-workers', isLoggedIn, authController.admincabinetworkers);
@@ -38,9 +40,15 @@ module.exports = (app, passport) => {
 
     app.get ('/admin-cabinet-release', isLoggedIn, authController.admincabinetrelease);
 
+    app.get ('/admin-cabinet-map', isLoggedIn, authController.admincabinetmap);
+
     app.get ('/worker-cabinet-register', isLoggedIn, authController.workercabinetregister);
 
     app.get ('/worker-cabinet-add', isLoggedIn, authController.workercabinetadd);
+
+    app.get ('/worker-cabinet-map', isLoggedIn, authController.workercabinetmap);
+
+    app.get ('/comingsoon', isLoggedIn, authController.comingsoon);
 
 
 };
