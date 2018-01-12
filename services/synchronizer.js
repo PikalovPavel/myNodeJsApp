@@ -44,7 +44,7 @@ const НОВОСТЬ = sequelize.import("../models/New.js");
 ПОСЕЩЕНИЕ.belongsTo(User, {foreignKey:'user_id',as:'visit_user'});
 ЗАКЛЮЧЁННЫЙ.hasMany(РОДСТВЕННАЯ_СВЯЗЬ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
 ЗАКЛЮЧЁННЫЙ.hasMany(ПОСЕЩЕНИЕ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
-ПРЕДМЕТ.hasMany(УЧИТЕЛЬ,  {foreignKey: 'ПРЕДМЕТ'});
+ПРЕДМЕТ.hasMany(УЧИТЕЛЬ,  {foreignKey: 'ПРЕДМЕТ_ИД'});
 ПРЕДМЕТ.hasMany(ЖУРНАЛ, {foreignKey: 'ПРЕДМЕТ'});
 УЧИТЕЛЬ.hasMany(ЖУРНАЛ,  {foreignKey: 'ЧЕЛОВЕК_ИД'});
 

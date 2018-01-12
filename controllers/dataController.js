@@ -237,16 +237,10 @@ module.exports = (app, synchronizer) => {
     app.post('/api/setMarks', isLoggedIn, (req, resp)=>{
         var mydata = req.body;
         var res=true;
-
-            synchronizer.sequelize.query("INSERT INTO ЖУРНАЛ VALUES ('"+mydata.inpudId+"', '"+mydata.subject+"', '11' '"+mydata.kr1+"', '"+mydata.kr2+"', '"+mydata.kr3+"', '"+mydata.kr4+"', '"+mydata.lk+"') ON CONFLICT (ЧЕЛОВЕК_ИД, ПРЕДМЕТ) " +
-                "DO UPDATE SET КР1='"+mydata.kr1+"'," +
-                "КР2='"+mydata.kr2+"'," +
-                "КР3='"+mydata.kr3+"'," +
-                "КР3='"+mydata.kr4+"'," +
-                "ЛК='"+mydata.lk+"'").spread((results, metadata) => {
+            synchronizer.sequelize.query("INSERT INTO ЖУРНАЛ VALUES ("+mydata.inpudId+", "+mydata.subject+", 3, "+mydata.kr1+", "+mydata.kr2+", "+mydata.kr3+", "+mydata.kr4+", "+mydata.lk+") ON CONFLICT DO NOTHING").spread((results, metadata) => {
             }).catch(function (err) {
                 console.log(err);
-                res="false";
+                res=false;
             });
         resp.send(res);
     });

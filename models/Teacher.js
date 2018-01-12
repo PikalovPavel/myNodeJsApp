@@ -9,9 +9,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             primaryKey: true
         },
-        БЛОК: {
-            type: DataTypes.STRING
-        }
     }, {
         //timestamp - время создания, время обновления
         timestamps: false,
