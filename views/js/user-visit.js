@@ -20,10 +20,10 @@ function include(arr,obj) {
     return (arr.indexOf(obj) != -1);
 }
 function postVisit() {
+    var inputText = $("#prisonerID").val();
    var prisoners = loadPrisoners();
-    if (inputText!==null) {
-        var inputText = $("#prisonerID").val();
-        var inputId = parseInt(inputText,10);
+    var inputId = parseInt(inputText,10);
+    if (!isNaN(inputId)) {
         var text = $("#datepicker").val();
         var data = {};
         if (include(prisoners,inputId)) {
@@ -39,19 +39,19 @@ function postVisit() {
                 console.log(data);
                 var result;
                 if (data=="true") {
-                   alert(data);
+                    $("#result_text").text("Запрос на посещение был отправлен!");
                 }
                 else if(data==="false") {
-                    alert("На эту дату уже назначено посещение")
+                    $("#result_text").text("Нельзя назначить встречу на эту дату!");
                 }
 
             }
 
         });
     }
-    else alert("Заключенного с таким ID не существует")
-    }
-else alert("Поле не должно быть пустым");
+    else $("#result_text").text("Заключенного с id = "+inputId+" не существует");
+
+    }  else $("#result_text").text("Пол не должно быть пустым");
 }
 
 

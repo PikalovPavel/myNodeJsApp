@@ -105,7 +105,15 @@
             </div>
             <div class="user-dashboard">
                 <h1>Заявка на досрочное</h1>
-
+                <script>
+                    function checkCurr(d) {
+                        if(window.event)
+                        {
+                            if(event.keyCode == 37 || event.keyCode == 39) return;
+                        }
+                        d.value = d.value.replace(/\D/g,'');
+                    }
+                </script>
 
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
@@ -113,7 +121,8 @@
                                 <div class="form-group">
                                     <label for="prisonerID"><h2>ID Заключённого:</h2></label>
                                     <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
-                                           placeholder="Введите ID заключённого">
+                                           placeholder="Введите ID заключённого" onkeyup="checkCurr(this)">
+
                                 </div>
                             </div>
                         </div>

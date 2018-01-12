@@ -185,8 +185,7 @@ module.exports = (app, synchronizer) => {
         synchronizer.sequelize.query("INSERT into ПОСЕЩЕНИЕ(ЧЕЛОВЕК_ИД, РОДСТВЕННИК_ИД, ДАТА_ПОСЕЩЕНИЯ) VALUES ('"+req.body.inpudId+"', '"+req.user.user_id+"', '"+date+"')").spread((results,metadata)=>{
             resp.send("true");
         }).catch( function (err) {
-            console.log(err);
-            resp.send(err);
+            resp.send("false");
         })
     });
 
