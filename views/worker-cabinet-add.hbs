@@ -47,9 +47,9 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li><a href="/worker-cabinet-add"><i class="fa fa-plus" aria-hidden="true"></i><span
+                    <li class="active"><a href="/worker-cabinet-register"><i class="fa fa-plus" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Проставить оценки</span></a></li>
-                    <li class="active"><a href="/worker-cabinet-register"><i class="fa fa-tasks" aria-hidden="true"></i><span
+                    <li><a href="/worker-cabinet-register"><i class="fa fa-tasks" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Электронный журнал</span></a></li>
                 </ul>
             </div>
@@ -107,6 +107,15 @@
                     <div class="col-md-5 col-sm-5 col-xs-12 gutter">
                         <div class="register">
                             <div class="form-group">
+                                <label for="prisonerID"><h2>ID Заключённого:</h2></label>
+                                <input type="text" class="form-control" name="prisonerId" id="prisonerID" aria-describedby="IDHelp"
+                                       placeholder="Введите ID заключённого">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="form-group">
                                 <label for="subjectSelect"><h2>Выбор предмета:</h2></label>
                                 <select class="form-control" name="year" id="subjectSelect">
                                     <option value="0">Математика</option>
@@ -120,36 +129,88 @@
                     </div>
                 </div>
                 <br>
-                <div class="row" >
-                    <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+                <div class = "row">
+                    <div class="col-md-2 col-sm-2 col-xs-12 gutter">
                         <div class="register">
-                            <h2>Результаты: </h2>
-                            <div class="container">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Имя</th>
-                                        <th scope="col">Фамилия</th>
-                                        <th scope="col">КР1</th>
-                                        <th scope="col">КР2</th>
-                                        <th scope="col">КР3</th>
-                                        <th scope="col">КР4</th>
-                                        <th scope="col">ЛК</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>\{{message.prisoner_register.human_prisoner['ИМЯ']}}</td>
-                                        <td>\{{message.prisoner_register.human_prisoner['ФАМИЛИЯ']}}</td>
-                                        <td>\{{message['КР1']}}</td>
-                                        <td>\{{message['КР2']}}</td>
-                                        <td>\{{message['КР3']}}</td>
-                                        <td>\{{message['КР4']}}</td>
-                                        <td>\{{message['ЛК']}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="form-group">
+                                <label for="subjectSelect"><h2>КР1:</h2></label>
+                                <select class="form-control" name="year" id="subjectSelect">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2"  >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4"  >4</option>
+                                    <option value="5" >5</option>
+                                </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="form-group">
+                                <label for="subjectSelect"><h2>КР2:</h2></label>
+                                <select class="form-control" name="year" id="subjectSelect">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2"  >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4"  >4</option>
+                                    <option value="5" >5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="form-group">
+                                <label for="subjectSelect"><h2>КР3:</h2></label>
+                                <select class="form-control" name="year" id="subjectSelect">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2"  >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4"  >4</option>
+                                    <option value="5" >5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="form-group">
+                                <label for="subjectSelect"><h2>КР4:</h2></label>
+                                <select class="form-control" name="year" id="subjectSelect">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2"  >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4"  >4</option>
+                                    <option value="5" >5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="form-group">
+                                <label for="subjectSelect"><h2>ЛК:</h2></label>
+                                <select class="form-control" name="year" id="subjectSelect">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2"  >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4"  >4</option>
+                                    <option value="5" >5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12 gutter">
+                        <div class="register content-centered">
+                            <button type="submit" class="btn btn-success">Проставить оценки</button>
                         </div>
                     </div>
                 </div>

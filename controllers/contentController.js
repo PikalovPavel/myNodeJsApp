@@ -37,6 +37,9 @@ module.exports = {
     },
     workercabinetregister: (req, resp) => {
         resp.render('worker-cabinet-register');
+    },
+    workercabinetadd: (req, resp) => {
+        resp.render('worker-cabinet-add');
     }
 
 
