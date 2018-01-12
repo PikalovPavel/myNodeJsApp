@@ -36,5 +36,7 @@ module.exports = (app, passport) => {
 
     app.get ('/admin-cabinet-release', isLoggedIn, authController.admincabinetrelease);
 
+    app.get ('/worker-cabinet-register', isLoggedIn, authController.workercabinetregister);
+
 
 };

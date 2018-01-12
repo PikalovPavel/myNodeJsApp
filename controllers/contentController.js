@@ -34,6 +34,9 @@ module.exports = {
     },
     admincabinetrelease: (req, resp) => {
         resp.render('admin-cabinet-release');
+    },
+    workercabinetregister: (req, resp) => {
+        resp.render('worker-cabinet-register');
     }
 
 
