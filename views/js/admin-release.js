@@ -15,10 +15,14 @@ function loadReleasers() {
     }
     loadReleasers();
 
+
+loadReleasers();
 var app = new Vue({
     el: '#appe',
     data: {
         messagee:releas
     }
 });
+
+
 

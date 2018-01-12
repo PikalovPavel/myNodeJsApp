@@ -5,20 +5,25 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             allowNull:false
         },
-        РОДСТВЕННИК_ИД: {
+        user_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull:false
         },
+        ПОСЕЩЕНИЕ_ИД: {
+            type: DataTypes.INTEGER,
+            autoIncrement:true
+        },
+
         ДАТА_ПОСЕЩЕНИЯ: {
             type: DataTypes.DATE,
             primaryKey: true,
             allowNull:false
         },
         СТАТУС: {
-            type: DataTypes.STRING,
+            type: DataTypes.BOOLEAN,
             allowNull:false,
-            defaultValue:"false"
+            defaultValue:false
         }
     }, {
         timestamps: false,

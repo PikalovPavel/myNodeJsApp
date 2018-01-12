@@ -112,10 +112,6 @@
                         map[$(this).attr("id")] = $(this).is(':checked');
                     });
 
-                   for (var key in map) {
-                      if(map[key]) map[key]="TRUE"; else map[key]="FALSE";
-                      console.log(map[key])
-                   }
                     $.ajax({
                         url : '/api/setRelease',
                         type: 'POST',
@@ -123,14 +119,11 @@
                         data: JSON.stringify(map),
                         success: function (data) {
                             console.log(data);
-                            var result;
-                            if (data=="true") {
-                                alert("true");
+                            if (data==="true") {
                                 $("#result_text").text("Все было успешно добавлено!");
                             }
                             else if(data==="false") {
-                                $("#result_text").text("Заключенного с id = "+inputId+" не существует. Обратитесь к администратору за нужным ID.");
-                                alert("false");
+                                $("#result_text").text("Что-то пошло не так");
                             }
 
                         }

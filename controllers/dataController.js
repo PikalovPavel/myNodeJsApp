@@ -211,9 +211,9 @@ module.exports = (app, synchronizer) => {
     });
 
     app.get('/api/getReleaseById', isLoggedIn, (req, resp)=>{
-        synchronizer.sequelize.models.ДОСРОЧНОЕ.findall({
+        synchronizer.sequelize.models.ДОСРОЧНОЕ.findAll({
             where: {
-                user_id: req.user_user_id
+                user_id: req.user.user_id
             }
         }).then((releases)=>{
             releases ?
@@ -224,10 +224,21 @@ module.exports = (app, synchronizer) => {
 
     app.post('/api/setRelease', isLoggedIn, (req, resp)=>{
         var mydata = req.body;
-        var res;
+        var res="true";
         for (key in mydata) {
             synchronizer.sequelize.query("UPDATE ДОСРОЧНОЕ SET СТАТУС = "+mydata[key]+" WHERE ЗАЯВЛЕНИЕ_ИД = "+key+"").spread((results, metadata) => {
-               res="true";
+            }).catch(function (err) {
+                res="false";
+            })
+        }
+        resp.send(res);
+    });
+
+    app.post('/api/setVisit', isLoggedIn, (req, resp)=>{
+        var mydata = req.body;
+        var res="true";
+        for (key in mydata) {
+            synchronizer.sequelize.query("UPDATE ПОСЕЩЕНИЕ SET СТАТУС = "+mydata[key]+" WHERE ПОСЕЩЕНИЕ_ИД = "+key+"").spread((results, metadata) => {
             }).catch(function (err) {
                 res="false";
             })
@@ -237,11 +248,49 @@ module.exports = (app, synchronizer) => {
 
     app.post('/api/visit', isLoggedIn, (req, resp)=>{
         var date=req.body.text.replace("/","-").replace("/","-");
-        synchronizer.sequelize.query("INSERT into ПОСЕЩЕНИЕ(ЧЕЛОВЕК_ИД, РОДСТВЕННИК_ИД, ДАТА_ПОСЕЩЕНИЯ) VALUES ('"+req.body.inpudId+"', '"+req.user.user_id+"', '"+date+"')").spread((results,metadata)=>{
+        synchronizer.sequelize.query("INSERT into ПОСЕЩЕНИЕ(ЧЕЛОВЕК_ИД, user_id , ДАТА_ПОСЕЩЕНИЯ) VALUES ('"+req.body.inpudId+"', '"+req.user.user_id+"', '"+date+"')").spread((results,metadata)=>{
             resp.send("true");
         }).catch( function (err) {
             resp.send("false");
         })
+    });
+
+    app.get('/api/allVisits', isLoggedIn, (req, resp)=>{
+        synchronizer.sequelize.models.ПОСЕЩЕНИЕ.findAll ({
+            attributes: ['ЧЕЛОВЕК_ИД','user_id','ДАТА_ПОСЕЩЕНИЯ', 'ПОСЕЩЕНИЕ_ИД', 'СТАТУС'],
+            include: [
+                {
+                    model:synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,
+                    as: 'visit_prisoner',
+                    attributes: {
+                        exclude: ['ОТЧЕСТВО','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                    },
+                    include: [
+                        {
+                            model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                            as: 'human_prisoner',
+                            attributes: {
+                                exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','Дата_Рождения','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                            }
+                        }
+
+                    ]
+                },
+
+                {
+                    model:synchronizer.sequelize.models.User,
+                    as: 'visit_user',
+                    attributes: {
+                        exclude: ['user_id','password','role']
+                    }
+
+                }
+            ]
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
     });
 
     app.get('/test/:id1/:id2', (req,resp)=>{
