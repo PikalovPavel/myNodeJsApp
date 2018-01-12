@@ -181,10 +181,12 @@ module.exports = (app, synchronizer) => {
     });
 
     app.post('/api/visit', isLoggedIn, (req, resp)=>{
-        synchronizer.sequelize.query("INSERT into ДОСРОЧНОЕ(ЧЕЛОВЕК_ИД, ТЕКСТ) VALUES ('"+req.body.inpudId+"', '"+req.body.text+"')").spread((results,metadata)=>{
+        var date=req.body.text.replace("/","-").replace("/","-");
+        synchronizer.sequelize.query("INSERT into ПОСЕЩЕНИЕ(ЧЕЛОВЕК_ИД, РОДСТВЕННИК_ИД, ДАТА_ПОСЕЩЕНИЯ) VALUES ('"+req.body.inpudId+"', '"+req.user.user_id+"', '"+date+"')").spread((results,metadata)=>{
             resp.send("true");
         }).catch( function (err) {
-            resp.send("false");
+            console.log(err);
+            resp.send(err);
         })
     });
 

@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
         СТАТУС: {
             type: DataTypes.STRING,
             allowNull:false,
-            defaultValue:"В_РАССМОТРЕНИИ"
+            defaultValue:"false"
         }
     }, {
         timestamps: false,
