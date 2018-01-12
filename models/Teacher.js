@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             primaryKey: true
         },
-        ПРЕДМЕТ: {
+        ПРЕДМЕТ_ИД: {
             type: DataTypes.INTEGER
         },
         БЛОК: {

@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
         ДАТА_НАЧАЛА_РАБОТЫ: {
             type: DataTypes.DATE
         },
-        ПРОФЕССИЯ: {
+        ПРОФФЕССИЯ: {
             type: DataTypes.STRING
         }
     }, {

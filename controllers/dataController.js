@@ -117,6 +117,50 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/allWorkers',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.ПЕРСОНАЛ.findAll ({
+            attributes: ['ЧЕЛОВЕК_ИД','ДАТА_НАЧАЛА_РАБОТЫ','ПРОФФЕССИЯ'],
+            include: [
+                {
+                    model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                    as: 'human_personal',
+                    attributes: {
+                        exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                    }
+                }
+            ]
+
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
+    });
+
+    app.get('/api/allTeachers',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.УЧИТЕЛЬ.findAll ({
+            attributes: ['ЧЕЛОВЕК_ИД','ПРЕДМЕТ_ИД'],
+            include: [
+                {
+                    model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                    as: 'human_teacher',
+                    attributes: {
+                        exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                    }
+                },
+                {
+                    model:synchronizer.sequelize.models.ПРЕДМЕТ,
+                    as: 'subject_teacher',
+                    attributes: ['НАЗВАНИЕ']
+                }
+            ]
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
+    });
+
     app.get('/api/subjects', isLoggedIn, (req, resp) => {
         synchronizer.sequelize.models.ПРЕДМЕТ.findAll({
             attributes: ['НАЗВАНИЕ']
