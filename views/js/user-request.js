@@ -16,7 +16,17 @@ function loadPrisoners() {
     release=register;
 
 }
+function checkerdate(arr) {
+    var dateArray = arr.split("-");
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).valueOf();
+    console.log(now);
+    var other = new Date(parseInt(dateArray[0],10),parseInt(dateArray[1],10)-1,parseInt(dateArray[2],10)).valueOf();
+    var othere = new Date(parseInt(dateArray[0],10),parseInt(dateArray[1],10)-1,parseInt(dateArray[2],10));
+    console.log(othere);
+    return other < today;
 
+}
 function loadTeachers() {
     var register = {};
 
@@ -31,6 +41,10 @@ function loadTeachers() {
             var arr;
             arr=register[k]['ДАТА_ПОСЕЩЕНИЯ'].split("T");
             register[k]['ДАТА_ПОСЕЩЕНИЯ']=arr[0];
+            ///КОСТЫЛИ!
+            if (register[k]['СТАТУС']) register[k]['СТАТУС']="t";
+            if (!register[k]['СТАТУС']) register[k]['СТАТУС']="f";
+            if (checkerdate(arr[0])) register[k]['СТАТУС']='Дата уже прошла';
         }
         console.log(register);
     }

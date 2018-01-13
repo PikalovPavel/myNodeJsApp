@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css\cabinet.css">
 
     <!-- Vue -->
-    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 </head>
 
@@ -144,11 +144,14 @@
                                         <td>\{{prisoner.visit_prisoner.human_prisoner['ИМЯ']}}</td>
                                         <td>\{{prisoner.visit_prisoner.human_prisoner['ФАМИЛИЯ']}}</td>
                                         <td>\{{prisoner['ДАТА_ПОСЕЩЕНИЯ']}}</td>
-                                        <td v-if="prisoner['СТАТУС']" style=" color: #4F8A10; background-color: #DFF2BF;">
+                                        <td v-if="prisoner['СТАТУС']=='t'" style=" color: #4F8A10; background-color: #DFF2BF;">
                                             Одобрено
                                         </td>
-                                        <td v-if="!prisoner['СТАТУС']" style=" color: #9F6000; background-color: #FEEFB3;">
+                                        <td v-else-if="prisoner['СТАТУС']=='f'" style=" color: #9F6000; background-color: #FEEFB3;">
                                             В рассмотрении
+                                        </td>
+                                        <td v-else-if="prisoner['СТАТУС']=='Дата уже прошла'" style=" color: #000000; background-color: #bdbdc5;">
+                                            Дата уже прошла
                                         </td>
                                     </tr>
                                     </tbody>
