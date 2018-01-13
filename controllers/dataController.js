@@ -1,35 +1,82 @@
+const contentController = require('./contentController');
 module.exports = (app, synchronizer) => {
+
     const isLoggedIn = (req, resp, next) => {
         if (req.isAuthenticated())
             return next();
         resp.redirect('/signin');
     };
 
-    app.get('/api/block', isLoggedIn, (req, resp) => {
-        synchronizer.sequelize.models.КАМЕРА.findAll().then((block) => {
-            resp.send(JSON.stringify(block))
-        });
-    });
 
-    app.get('/work',isLoggedIn, (req, resp)=> {
+
+    app.get('/worker-cabinet-add',isLoggedIn, (req, resp)=> {
         console.log(req.user.user_id);
         synchronizer.sequelize.models.User.findOne ({
             where : {
-                user_id: req.user.user_id,
-                role: 'WORKER'
+                $or: [
+                    {
+                        user_id: req.user.user_id,
+                        role: 'WORKER'
+                    },
+                    {
+                        user_id: req.user.user_id,
+                        role: 'ADMIN'
+                    }
+                ]
             },
 
         }).then((user)=> {
-            if (user) {
-                resp.redirect('/work');
-            }
+            if (user) resp.render('worker-cabinet-add');
+            else resp.redirect('/main');
         });
     });
 
+    app.get('/worker-cabinet-map',isLoggedIn, (req, resp)=> {
+        console.log(req.user.user_id);
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                $or: [
+                    {
+                        user_id: req.user.user_id,
+                        role: 'WORKER'
+                    },
+                    {
+                        user_id: req.user.user_id,
+                        role: 'ADMIN'
+                    }
+                ]
+            },
 
+        }).then((user)=> {
+            if (user) resp.render('worker-cabinet-map');
+            else resp.redirect('/main');
+        });
+    });
 
+    app.get('/worker-cabinet-register', isLoggedIn, (req, resp)=> {
+        console.log(req.body);
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                $or: [
+                    {
+                        user_id: req.user.user_id,
+                        role: 'WORKER'
+                    },
+                    {
+                        user_id: req.user.user_id,
+                        role: 'ADMIN'
+                    }
+                ]
+            },
 
-    app.get('/admin',isLoggedIn, (req, resp)=> {
+        }).then((user)=> {
+            if (user) resp.render('worker-cabinet-register');
+            else resp.redirect('/main');
+        });
+
+    });
+
+    app.get('/admin-cabinet-map',isLoggedIn, (req, resp)=> {
         console.log(req.user.user_id);
         synchronizer.sequelize.models.User.findOne ({
             where : {
@@ -38,10 +85,62 @@ module.exports = (app, synchronizer) => {
             },
 
         }).then((user)=> {
-            if (user) resp.redirect('/admin');
+            if (user) resp.render('admin-cabinet-map');
+            else resp.redirect('/main');
         });
     });
+    app.get('/admin-cabinet-prisoners',isLoggedIn, (req, resp)=> {
+        console.log(req.user.user_id);
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                user_id: req.user.user_id,
+                role: 'ADMIN'
+            },
 
+        }).then((user)=> {
+            if (user) resp.render('admin-cabinet-prisoners');
+            else resp.redirect('/main');
+        });
+    });
+    app.get('/admin-cabinet-release',isLoggedIn, (req, resp)=> {
+        console.log(req.user.user_id);
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                user_id: req.user.user_id,
+                role: 'ADMIN'
+            },
+
+        }).then((user)=> {
+            if (user) resp.render('admin-cabinet-release');
+            else resp.redirect('/main');
+        });
+    });
+    app.get('/admin-cabinet-visit',isLoggedIn, (req, resp)=> {
+        console.log(req.user.user_id);
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                user_id: req.user.user_id,
+                role: 'ADMIN'
+            },
+
+        }).then((user)=> {
+            if (user) resp.render('admin-cabinet-visit');
+            else resp.redirect('/main');
+        });
+    });
+    app.get('/admin-cabinet-workers',isLoggedIn, (req, resp)=> {
+        console.log(req.user.user_id);
+        synchronizer.sequelize.models.User.findOne ({
+            where : {
+                user_id: req.user.user_id,
+                role: 'ADMIN'
+            },
+
+        }).then((user)=> {
+            if (user) resp.render('admin-cabinet-workers');
+            else resp.redirect('/main');
+        });
+    });
     app.get('/api/user',isLoggedIn, (req, resp)=> {
         synchronizer.sequelize.models.User.findOne ({
             where : {
