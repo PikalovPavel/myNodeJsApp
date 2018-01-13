@@ -109,9 +109,9 @@
                     </nav>
                 </header>
             </div>
-            <div class="user-dashboard">
+            <div class="user-dashboard" id="appe">
                 <h1>Работники</h1>
-                <div class="row" id="appe">
+                <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
@@ -141,7 +141,7 @@
                 </div>
                 <br>
                 <h1>Учителя</h1>
-                <div class="row" id="appe">
+                <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
@@ -154,10 +154,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(prisoner) in teacher">
-                                        <td>\{{prisoner.human_teacher['ИМЯ']}}</td>
-                                        <td>\{{prisoner.human_teacher['ФАМИЛИЯ']}}</td>
-                                        <td>\{{prisoner.subject_teacher['НАЗВАНИЕ']}}</td>
+                                    <tr v-for="(prisonere) in teacher">
+                                        <td>\{{prisonere.human_teacher['ИМЯ']}}</td>
+                                        <td>\{{prisonere.human_teacher['ФАМИЛИЯ']}}</td>
+                                        <td>\{{prisonere.subject_teacher['НАЗВАНИЕ']}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

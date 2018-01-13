@@ -69,7 +69,6 @@ module.exports = (app, synchronizer) => {
                 ЧЕЛОВЕК_ИД: req.params.prId,
                 ПРЕДМЕТ: req.params.subId
             },
-            attributes: ['ЧЕЛОВЕК_ИД','КР1','КР2','КР3','КР4','ЛК'],
             include: [
                 {
                     model: synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,

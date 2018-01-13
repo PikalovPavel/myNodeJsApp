@@ -37,7 +37,7 @@
         });
     });
 </script>
-<div class="container-fluid display-table">
+<div class="container-fluid display-table" id="appe">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
@@ -112,8 +112,8 @@
                             <div class="register">
                                 <div class="form-group">
                                     <label for="subjectSelect"><h2>Выбор предмета:</h2></label>
-                                    <select class="form-control" name="year" id="subjectSelect">
-                                        <option value="0">Математика</option>
+                                    <select class="form-control" name="year" id="subjectSelect" v-on:click="load">
+                                        <option value="0" >Математика</option>
                                         <option value="1"  >Русский</option>
                                         <option value="2" >Литература</option>
                                         <option value="3"  >Религия</option>
@@ -123,20 +123,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-3 col-sm-3 col-xs-12 gutter">
-                            <div class="register content-centered">
-                                <button type="submit" class="btn btn-success" onclick="getRegister()">Проверить оценки</button>
-                            </div>
-                        </div>
-
                 </div>
                 <br>
-                <div class="row" >
+                <div class="row"  >
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <h2>Результаты: </h2>
                             <div class="container">
+
                                 <table class="table table-hover table-bordered">
                                     <thead class="thead-light">
                                     <tr>
@@ -150,9 +144,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>\{{message.prisoner_register.human_prisoner['ИМЯ']}}</td>
-                                        <td>\{{message.prisoner_register.human_prisoner['ФАМИЛИЯ']}}</td>
+                                    <tr v-if="mesb">
+                                        <td>\{{message['ЧЕЛОВЕК_ИД']}}</td>
+                                        <td>\{{message['ПРЕДМЕТ_ИД']}}</td>
                                         <td>\{{message['КР1']}}</td>
                                         <td>\{{message['КР2']}}</td>
                                         <td>\{{message['КР3']}}</td>
@@ -162,6 +156,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <p id="result_text"></p>
                         </div>
                     </div>
                 </div>
@@ -169,7 +164,7 @@
         </div>
     </div>
 </div>
-
+<script src="/js/user-cabinet-register.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"

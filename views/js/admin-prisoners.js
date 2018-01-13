@@ -12,6 +12,13 @@ function loadPrisoners() {
     } else {
         register = JSON.parse(xhr.responseText);
         console.log(register);
+        for (k in register) {
+
+        var arr;
+        arr=register[k].human_prisoner['Дата_Рождения'].split("T");
+        register[k].human_prisoner['Дата_Рождения']=arr[0];
+        }
+
     }
     prisoners=register;
 

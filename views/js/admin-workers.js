@@ -1,6 +1,6 @@
 
-var workers=null;
-var teachers=null;
+var workers=[];
+var teachers=[];
 
 function loadPrisoners() {
     var register = {};
@@ -13,6 +13,14 @@ function loadPrisoners() {
     } else {
         register = JSON.parse(xhr.responseText);
         console.log(register);
+        for (k in register) {
+            let arr0;
+            let arr1;
+            arr0=register[k].human_personal['Дата_Рождения'].split("T");
+            register[k].human_personal['Дата_Рождения']=arr0[0];
+            arr1=register[k]['ДАТА_НАЧАЛА_РАБОТЫ'].split("T");
+            register[k]['ДАТА_НАЧАЛА_РАБОТЫ']=arr1[0];
+        }
     }
     workers=register;
 
