@@ -222,6 +222,67 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/allReqEarly', isLoggedIn, (req, resp)=>{
+        synchronizer.sequelize.models.ДОСРОЧНОЕ.findAll({
+            where: {
+                user_id: req.user.user_id
+            },
+            include: [
+                {
+                    model: synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,
+                    as: 'release_prisoner',
+                    attributes: {
+                        exclude: ['СТАТЬЯ', 'СРОК']
+                    },
+                    include: [
+                        {
+                            model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                            as: 'human_prisoner',
+                            attributes: {
+                                exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','Дата_Рождения','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                            }
+                        }
+                    ]
+                }
+            ]
+        }).then((releases)=>{
+            releases ?
+                resp.send(JSON.stringify(releases)) :
+                resp.send('{}');
+        });
+    });
+
+
+    app.get('/api/allReqVisit', isLoggedIn, (req, resp)=>{
+        synchronizer.sequelize.models.ПОСЕЩЕНИЕ.findAll({
+            where: {
+                user_id: req.user.user_id
+            },
+            include: [
+                {
+                    model: synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,
+                    as: 'visit_prisoner',
+                    attributes: {
+                        exclude: ['СТАТЬЯ', 'СРОК']
+                    },
+                    include: [
+                        {
+                            model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                            as: 'human_prisoner',
+                            attributes: {
+                                exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','Дата_Рождения','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                            }
+                        }
+                    ]
+                }
+            ]
+        }).then((releases)=>{
+            releases ?
+                resp.send(JSON.stringify(releases)) :
+                resp.send('{}');
+        });
+    });
+
     app.post('/api/setRelease', isLoggedIn, (req, resp)=>{
         var mydata = req.body;
         var res="true";
