@@ -37,7 +37,7 @@
         });
     });
 </script>
-<div class="container-fluid display-table">
+<div class="container-fluid display-table" id="appe">
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
@@ -98,7 +98,7 @@
                         <div class="register">
                             <div class="form-group">
                                 <label for="subjectSelect"><h2>Выбор предмета:</h2></label>
-                                <select class="form-control" name="year" id="subjectSelect">
+                                <select class="form-control" name="year" id="subjectSelect" v-on:click="load">
                                     <option value="0">Математика</option>
                                     <option value="1"  >Русский</option>
                                     <option value="2" >Литература</option>
@@ -128,18 +128,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>\{{message.prisoner_register.human_prisoner['ИМЯ']}}</td>
-                                        <td>\{{message.prisoner_register.human_prisoner['ФАМИЛИЯ']}}</td>
-                                        <td>\{{message['КР1']}}</td>
-                                        <td>\{{message['КР2']}}</td>
-                                        <td>\{{message['КР3']}}</td>
-                                        <td>\{{message['КР4']}}</td>
-                                        <td>\{{message['ЛК']}}</td>
+                                    <tr v-for="(prisoner) in message">
+                                        <td>\{{prisoner['ЧЕЛОВЕК_ИД']}}</td>
+                                        <td>\{{prisoner['ПРЕДМЕТ_ИД']}}</td>
+                                        <td>\{{prisoner['КР1']}}</td>
+                                        <td>\{{prisoner['КР2']}}</td>
+                                        <td>\{{prisoner['КР3']}}</td>
+                                        <td>\{{prisoner['КР4']}}</td>
+                                        <td>\{{prisoner['ЛК']}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
+                            <p id="result_text"></p>
                         </div>
                     </div>
                 </div>
@@ -155,6 +156,6 @@
         crossorigin="anonymous"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
+<script src="/js/register-work.js"></script>
 </body>
 </html>

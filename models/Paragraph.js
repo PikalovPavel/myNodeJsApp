@@ -9,6 +9,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         ОБРАТНАЯ_СИЛА: {
             type: DataTypes.BOOLEAN
+        },
+        ОПИСАНИЕ: {
+            type: DataTypes.TEXT
         }
     }, {
         //timestamp - время создания, время обновления
