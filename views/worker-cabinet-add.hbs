@@ -17,7 +17,6 @@
 
     <!-- Jquery for Bootstrap -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
     <!-- Local stylesheet -->
     <link rel="stylesheet" href="css\global.css">
@@ -208,11 +207,11 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12 gutter">
+                    <div class="col-md-3 col-sm-3 col-xs-12 gutter" id="notify-container">
                         <div class="register content-centered">
                             <button type="submit" class="btn btn-success" onclick="postMarks()">Проставить оценки</button>
-                            <p id="result_text"></p>
                         </div>
+                        <div id="notify"></div>
                     </div>
                 </div>
                 <br>

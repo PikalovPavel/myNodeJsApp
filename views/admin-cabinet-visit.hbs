@@ -44,7 +44,8 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li><a href="/admin-cabinet-prisoners"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Заключённые</span></a>
+                    <li><a href="/admin-cabinet-prisoners"><i class="fa fa-user" aria-hidden="true"></i><span
+                            class="hidden-xs hidden-sm">Заключённые</span></a>
                     </li>
                     <li><a href="/admin-cabinet-workers"><i class="fa fa-user" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Работники</span></a>
@@ -52,7 +53,8 @@
                     <li><a href="/admin-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Заявки на досрочное</span></a>
                     </li>
-                    <li class="active"><a href="/admin-cabinet-visit"><i class="fa fa-envelope" aria-hidden="true"></i><span
+                    <li class="active"><a href="/admin-cabinet-visit"><i class="fa fa-envelope"
+                                                                         aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Заявки на посещение</span></a></li>
                     <li><a href="/admin-cabinet-map"><i class="fa fa-map" aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">План тюрьмы</span></a></li>
@@ -107,24 +109,38 @@
                 </header>
             </div>
             <script>
-                function sendToUserVisit () {
+                function sendToUserVisit() {
                     var map = {};
-                    $(".checkboxe").each(function() {
+                    $(".checkboxe").each(function () {
                         map[$(this).attr("id")] = $(this).is(':checked');
                     });
 
                     $.ajax({
-                        url : '/api/setVisit',
+                        url: '/api/setVisit',
                         type: 'POST',
                         contentType: 'application/json',
                         data: JSON.stringify(map),
                         success: function (data) {
                             console.log(data);
                             if (data) {
-                                $("#result_text").text("Все было успешно добавлено!");
+                                if (!($("#notify").length)) {
+                                    $("#notify-container").append("<div id=\"notify\"></div>");
+                                }
+                                $("#notify").empty();
+                                $("#notify").removeClass();
+                                $("#notify").addClass("alert alert-success alert-dismissable");
+                                $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                                $("#notify").append("Все было успешно добавлено!");
                             }
-                            else if(!data) {
-                                $("#result_text").text("Что-то пошло не так");
+                            else if (!data) {
+                                if (!($("#notify").length)) {
+                                    $("#notify-container").append("<div id=\"notify\"></div>");
+                                }
+                                $("#notify").empty();
+                                $("#notify").removeClass();
+                                $("#notify").addClass("alert alert-danger alert-dismissable");
+                                $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                                $("#notify").append("Что-то пошло не так");
                             }
 
                         }
@@ -135,31 +151,34 @@
             </script>
             <div class="user-dashboard" id="appe">
                 <h1>Заявки на посещение:</h1>
-                <div class="row" >
+                <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
-                                <table>
-                                    <thead>
+                                <table class="table table-hover table-bordered">
+                                    <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Родственник</th>
-                                        <th scope="col">Заключённый</th>
+                                        <th scope="col">Фамилия заключённого</th>
+                                        <th scope="col">Имя заключённого</th>
                                         <th scope="col">Дата</th>
                                         <th scope="col">Одобрено</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="(prisoner) in messagee" >
+                                    <tr v-for="(prisoner) in messagee">
                                         <td>\{{prisoner.visit_user.username}}</td>
+                                        <td>\{{prisoner.visit_prisoner.human_prisoner['ФАМИЛИЯ']}}</td>
                                         <td>\{{prisoner.visit_prisoner.human_prisoner['ИМЯ']}}</td>
-                                        <td>\{{prisoner.visit_prisoner.human_prisoner['ФАМЛИЯ']}}</td>
                                         <td>\{{prisoner['ДАТА_ПОСЕЩЕНИЯ']}}</td>
                                         <td>
                                             <div v-if="prisoner['СТАТУС']">
-                                                <input class="checkboxe" type="checkbox"  v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']" checked/>
+                                                <input class="checkbox" type="checkbox"
+                                                       v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']" checked/>
                                             </div>
                                             <div v-else>
-                                                <input class="checkboxe" type="checkbox"  v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']" />
+                                                <input class="checkbox" type="checkbox"
+                                                       v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -171,11 +190,13 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12 gutter">
+                    <div class="col-md-3 col-sm-3 col-xs-12 gutter" id="notify-container">
                         <div class="register content-centered">
-                            <button type="submit" class="btn btn-success" onclick="sendToUserVisit()">Применить изменения</button>
-                            <p id="result_text"></p>
+                            <button type="submit" class="btn btn-success" onclick="sendToUserVisit()">Применить
+                                изменения
+                            </button>
                         </div>
+                        <div id="notify"></div>
                     </div>
                 </div>
             </div>

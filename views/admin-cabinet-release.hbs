@@ -125,10 +125,24 @@
                         success: function (data) {
                             console.log(data);
                             if (data==="true") {
-                                $("#result_text").text("Все было успешно добавлено!");
+                                if ( !($( "#notify" ).length) ) {
+                                    $("#notify-container").append("<div id=\"notify\"></div>");
+                                }
+                                $("#notify").empty();
+                                $("#notify").removeClass();
+                                $("#notify").addClass("alert alert-success alert-dismissable");
+                                $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                                $("#notify").append("Все было успешно добавлено!");
                             }
                             else if(data==="false") {
-                                $("#result_text").text("Что-то пошло не так");
+                                if ( !($( "#notify" ).length) ) {
+                                    $("#notify-container").append("<div id=\"notify\"></div>");
+                                }
+                                $("#notify").empty();
+                                $("#notify").removeClass();
+                                $("#notify").addClass("alert alert-danger alert-dismissable");
+                                $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                                $("#notify").append("Заключенного с id = "+inputId+" не существует.");
                             }
 
                         }
@@ -143,11 +157,11 @@
                     <div class="col-md-12 col-sm-12 col-xs-12 gutter">
                         <div class="register">
                             <div class="container">
-                                <table>
-                                    <thead>
+                                <table class="table table-hover table-bordered requests">
+                                    <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Фамилия заключенного</th>
                                         <th scope="col">Имя заключенного</th>
+                                        <th scope="col">Фамилия заключенного</th>
                                         <th scope="col">Текст</th>
                                         <th scope="col">Одобрено</th>
                                     </tr>
@@ -174,11 +188,11 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12 gutter">
+                    <div class="col-md-3 col-sm-3 col-xs-12 gutter" id="notify-container">
                         <div class="register content-centered">
                             <button type="submit" class="btn btn-success" onclick="sendToUserRelease()">Применить изменения</button>
-                            <p id="result_text"></p>
                         </div>
+                        <div id="notify"></div>
                     </div>
                 </div>
             </div>

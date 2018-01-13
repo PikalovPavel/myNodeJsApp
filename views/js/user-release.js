@@ -18,10 +18,24 @@ function postRelease() {
                     console.log(data);
                     var result;
                     if (data=="true") {
-                        $("#result_text").text("Все было успешно добавлено!");
+                        if ( !($( "#notify" ).length) ) {
+                            $("#notify-container").append("<div id=\"notify\"></div>");
+                        }
+                        $("#notify").empty();
+                        $("#notify").removeClass();
+                        $("#notify").addClass("alert alert-success alert-dismissable");
+                        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                        $("#notify").append("Все было успешно добавлено!");
                     }
                     else if(data==="false") {
-                        $("#result_text").text("Заключенного с id = "+inputId+" не существует. Обратитесь к администратору за нужным ID.");
+                        if ( !($( "#notify" ).length) ) {
+                            $("#notify-container").append("<div id=\"notify\"></div>");
+                        }
+                        $("#notify").empty();
+                        $("#notify").removeClass();
+                        $("#notify").addClass("alert alert-danger alert-dismissable");
+                        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                        $("#notify").append("Заключенного с id = "+inputId+" не существует. Обратитесь к администратору за нужным ID.");
                     }
 
                 }

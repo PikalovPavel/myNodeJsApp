@@ -39,19 +39,51 @@ function postVisit() {
                 console.log(data);
                 var result;
                 if (data=="true") {
-                    $("#result_text").text("Запрос на посещение был отправлен!");
+                    if ( !($( "#notify" ).length) ) {
+                        $("#notify-container").append("<div id=\"notify\"></div>");
+                    }
+                    $("#notify").empty();
+                    $("#notify").removeClass();
+                    $("#notify").addClass("alert alert-success alert-dismissable");
+                    $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                    $("#notify").append("Запрос на посещение был отправлен!");
                 }
                 else if(data==="false") {
-                    $("#result_text").text("Нельзя назначить встречу на эту дату!");
+                    if ( !($( "#notify" ).length) ) {
+                        $("#notify-container").append("<div id=\"notify\"></div>");
+                    }
+                    $("#notify").empty();
+                    $("#notify").removeClass();
+                    $("#notify").addClass("alert alert-warning alert-dismissable");
+                    $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                    $("#notify").append("Нельзя назначить встречу на эту дату!");
                 }
 
             }
 
         });
     }
-    else $("#result_text").text("Заключенного с id = "+inputId+" не существует");
+    else {
+            if ( !($( "#notify" ).length) ) {
+                $("#notify-container").append("<div id=\"notify\"></div>");
+            }
+            $("#notify").empty();
+            $("#notify").removeClass();
+            $("#notify").addClass("alert alert-danger alert-dismissable");
+            $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+            $("#notify").append("Заключенного с id = "+inputId+" не существует");
+        }
 
-    }  else $("#result_text").text("Пол не должно быть пустым");
+    }  else {
+        if ( !($( "#notify" ).length) ) {
+            $("#notify-container").append("<div id=\"notify\"></div>");
+        }
+        $("#notify").empty();
+        $("#notify").removeClass();
+        $("#notify").addClass("alert alert-warning alert-dismissable");
+        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+        $("#notify").append("Поле не должно быть пустым");
+    }
 }
 
 

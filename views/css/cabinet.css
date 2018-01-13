@@ -176,7 +176,7 @@ header {
     word-break: break-all;
 }
 
-td:nth-child(3) {
+.requests td:nth-child(3) {
     width: 33% ;
 }
 

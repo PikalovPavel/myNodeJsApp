@@ -46,19 +46,44 @@ function loadPrisoners() {
                         register['ЧЕЛОВЕК_ИД'] = register.prisoner_register.human_prisoner['ИМЯ'];
                         register['ПРЕДМЕТ_ИД'] = register.prisoner_register.human_prisoner['ФАМИЛИЯ'];
                         app.message = register;
-                        $("#result_text").text("");
+                        $("#notify").empty();
+                        $("#notify").removeClass();
                     } catch (e) {
                         app.message={};
-                        $("#result_text").text("У заключённого с этим айди на данный момент не стоит оценок:(");
+                        if ( !($( "#notify" ).length) ) {
+                            $("#notify-container").append("<div id=\"notify\"></div>");
+                        }
+                        $("#notify").empty();
+                        $("#notify").removeClass();
+                        $("#notify").addClass("alert");
+                        $("#notify").addClass("alert-warning");
+                        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                        $("#notify").append("У заключённого с этим айди на данный момент не стоит оценок:(");
                     }
                 }
             } else {
                     app.message={};
-                    $("#result_text").text("Все поля долджны быть заполнены");
+                    if ( !($( "#notify" ).length) ) {
+                        $("#notify-container").append("<div id=\"notify\"></div>");
+                    }
+                    $("#notify").empty();
+                    $("#notify").removeClass();
+                    $("#notify").addClass("alert");
+                    $("#notify").addClass("alert-warning");
+                    $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                    $("#notify").append("Все поля долджны быть заполнены");
                 }
             } else {
                     app.message={};
-                    $("#result_text").text("Заключённого с ID = "+inputId+" не существует");
+                    if ( !($( "#notify" ).length) ) {
+                        $("#notify-container").append("<div id=\"notify\"></div>");
+                    }
+                    $("#notify").empty();
+                    $("#notify").removeClass();
+                    $("#notify").addClass("alert");
+                    $("#notify").addClass("alert-danger");
+                    $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                    $("#notify").append("Заключённого с ID = "+inputId+" не существует");
                 }
             }
         }

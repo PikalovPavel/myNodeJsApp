@@ -56,19 +56,51 @@ function postMarks() {
                     console.log(data);
                     var result;
                     if (data) {
-                        $("#result_text").text("Вы успешно поставили оценки!");
+                        if ( !($( "#notify" ).length) ) {
+                            $("#notify-container").append("<div id=\"notify\"></div>");
+                        }
+                        $("#notify").empty();
+                        $("#notify").removeClass();
+                        $("#notify").addClass("alert alert-success alert-dismissable");
+                        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                        $("#notify").append("Вы успешно поставили оценки!");
                     }
                     else if(!data) {
-                        $("#result_text").text("Оценки не были поставлены");
+                        if ( !($( "#notify" ).length) ) {
+                            $("#notify-container").append("<div id=\"notify\"></div>");
+                        }
+                        $("#notify").empty();
+                        $("#notify").removeClass();
+                        $("#notify").addClass("alert alert-danger alert-dismissable");
+                        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+                        $("#notify").append("Оценки не были поставлены");
                     }
 
                 }
 
             });
         }
-        else $("#result_text").text("Заключенного с id = "+inputId+" не существует");
+        else {
+            if ( !($( "#notify" ).length) ) {
+                $("#notify-container").append("<div id=\"notify\"></div>");
+            }
+            $("#notify").empty();
+            $("#notify").removeClass();
+            $("#notify").addClass("alert alert-danger alert-dismissable");
+            $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+            $("#notify").append("Заключенного с id = "+inputId+" не существует");
+        }
 
-    }  else $("#result_text").text("Все поля должны быть заполнены");
+    }  else {
+        if ( !($( "#notify" ).length) ) {
+            $("#notify-container").append("<div id=\"notify\"></div>");
+        }
+        $("#notify").empty();
+        $("#notify").removeClass();
+        $("#notify").addClass("alert alert-warning alert-dismissable");
+        $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
+        $("#notify").append("Все поля должны быть заполнены");
+    }
 }
 
 

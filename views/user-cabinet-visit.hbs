@@ -41,7 +41,8 @@
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="/user-cabinet-visit"><i class="fa fa-calendar" aria-hidden="true"></i><span
+                    <li class="active"><a href="/user-cabinet-visit"><i class="fa fa-calendar"
+                                                                        aria-hidden="true"></i><span
                             class="hidden-xs hidden-sm">Заявка на посещение</span></a>
                     </li>
                     <li><a href="/user-cabinet-release"><i class="fa fa-envelope" aria-hidden="true"></i><span
@@ -92,49 +93,49 @@
             <div class="user-dashboard">
                 <h1>Заявка на посещение</h1>
                 <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
-                            <div class="register">
-                                <div class="form-group">
-                                    <script>
-                                        function checkCurr(d) {
-                                            if(window.event)
-                                            {
-                                                if(event.keyCode == 37 || event.keyCode == 39) return;
-                                            }
-                                            d.value = d.value.replace(/\D/g,'');
+                    <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                        <div class="register">
+                            <div class="form-group">
+                                <script>
+                                    function checkCurr(d) {
+                                        if (window.event) {
+                                            if (event.keyCode == 37 || event.keyCode == 39) return;
                                         }
+                                        d.value = d.value.replace(/\D/g, '');
+                                    }
+                                </script>
+                                <label for="prisonerID"><h2>ID Заключённого:</h2></label>
+                                <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
+                                       placeholder="Введите ID заключённого" onkeyup="checkCurr(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 gutter">
+                        <div class="register content-centered" id="sandbox-container">
+                            <div class="form-group">
+                                <label for="datepicker"><h2>Выберите дату:</h2></label>
+                                <div class="input-group date" data-provide="datepicker">
+                                    <input type="text" class="form-control" id="datepicker"><span
+                                        class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                                    <script type="text/javascript">
+                                        $('#sandbox-container .input-group.date').datepicker({
+                                            format: "dd/mm/yy",
+                                            weekStart: 1,
+                                            maxViewMode: 2,
+                                            clearBtn: true,
+                                            language: "ru"
+                                        });
                                     </script>
-                                    <label for="prisonerID"><h2>ID Заключённого:</h2></label>
-                                    <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
-                                           placeholder="Введите ID заключённого" onkeyup="checkCurr(this)">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 gutter">
-                            <div class="register content-centered" id="sandbox-container">
-                                <div class="form-group">
-                                    <label for="datepicker"><h2>Выберите дату:</h2></label>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <input type="text"  class="form-control" id="datepicker"><span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
-                                        <script type="text/javascript">
-                                            $('#sandbox-container .input-group.date').datepicker({
-                                                format: "dd/mm/yy",
-                                                weekStart: 1,
-                                                maxViewMode: 2,
-                                                clearBtn: true,
-                                                language: "ru"
-                                            });
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div id="notify-container" class="col-md-3 col-sm-3 col-xs-12 gutter">
+                        <div class="register content-centered">
+                            <button type="submit" class="btn btn-success" onclick="postVisit()">Подать заявку</button>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 gutter">
-                            <div class="register content-centered">
-                                <button type="submit" class="btn btn-success" onclick="postVisit()">Подать заявку</button>
-                            </div>
-                            <p id="result_text"></p>
-                        </div>
+                        <div id="notify"></div>
+                    </div>
                 </div>
             </div>
         </div>
