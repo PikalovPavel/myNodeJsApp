@@ -12,12 +12,7 @@ body {
     background-position: center;
 }
 
-/* Позиционирование блока по левому краю родиеля */
-.left {
-    float: left;
-}
-
-/* Позиционирование блока по правому краю родиеля */
-.right {
-    float: right;
+/* Картинки по центру */
+.img-responsive {
+    margin: 0 auto;
 }
