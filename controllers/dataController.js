@@ -157,11 +157,18 @@ module.exports = (app, synchronizer) => {
         synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ.findAll ({
             attributes: ['ЧЕЛОВЕК_ИД','СТАТЬЯ','СРОК','НОМЕР_КАМЕРЫ'],
             include: [
-                {
+                        {
                             model:synchronizer.sequelize.models.ЧЕЛОВЕК,
                             as: 'human_prisoner',
                             attributes: {
                                 exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                            }
+                        },
+                        {
+                            model:synchronizer.sequelize.models.СТАТЬЯ,
+                            as: 'par_prisoner',
+                            attributes: {
+                                exclude: ['СТАТЬЯ','СРОК','ОБРАТНАЯ_СИЛА']
                             }
                         }
             ]

@@ -11,7 +11,7 @@ const flash = require('connect-flash');
 const app = express();
 const sequelize = synchronizer.sequelize;
 
-//const bot = require('./bot/bot')(synchronizer);
+const bot = require('./bot/bot')(synchronizer);
 
 
 //Настройки Handlebars

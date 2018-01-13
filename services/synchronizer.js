@@ -32,8 +32,7 @@ const НОВОСТЬ = sequelize.import("../models/New.js");
 
 
 ЧЕЛОВЕК.hasMany(РОДСТВЕННАЯ_СВЯЗЬ, {foreignKey: 'РОДСТВЕННИК_ИД'} );
-
-СТАТЬЯ.hasMany(ЗАКЛЮЧЁННЫЙ,  {foreignKey: 'СТАТЬЯ'});
+ЗАКЛЮЧЁННЫЙ.belongsTo(СТАТЬЯ,{foreignKey: 'СТАТЬЯ',as:'par_prisoner'});
 УЧИТЕЛЬ.belongsTo(ЧЕЛОВЕК, {foreignKey:'ЧЕЛОВЕК_ИД',as:'human_teacher'});
 ПЕРСОНАЛ.belongsTo(ЧЕЛОВЕК, {foreignKey:'ЧЕЛОВЕК_ИД',as:'human_personal'});
 ЖУРНАЛ.belongsTo(ЗАКЛЮЧЁННЫЙ, {foreignKey:'ЧЕЛОВЕК_ИД',as:'prisoner_register'});

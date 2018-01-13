@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('СТАТЬЯ', {
-        НОМЕР_СТАТЬИ: {
+        СТАТЬЯ: {
             type: DataTypes.STRING,
             primaryKey: true
         },
