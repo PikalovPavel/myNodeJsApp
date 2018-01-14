@@ -73,8 +73,8 @@ header {
 }
 
 .navi a {
-    border-bottom: 1px solid #8cde6e;
-    border-top: 1px solid #8cde6e;
+    border-bottom: 1px solid #b3de5b;
+    border-top: 1px solid #b3de5b;
     color: #ffffff;
     display: block;
     font-size: 17px;
@@ -85,18 +85,18 @@ header {
 
 .navi i {
     margin-right: 15px;
-    color: #8cde6e;
+    color: #b3de5b;
 }
 
 .navi .active a {
     background: #33cc33;
-    border-left: 5px solid #8cde6e;
+    border-left: 5px solid #b3de5b;
     padding-left: 15px;
 }
 
 .navi a:hover {
     background: #33cc33 none repeat scroll 0 0;
-    border-left: 5px solid #8cde6e;
+    border-left: 5px solid #b3de5b;
     display: block;
     padding-left: 15px;
 }
@@ -169,7 +169,7 @@ header {
 }
 
 .thead-light {
-    background-color: #8cde6e;
+    background-color: #b3de5b;
 }
 
 .table{
@@ -181,7 +181,7 @@ header {
 }
 
 .navbar-default {
-    background-color: #8cde6e;
+    background-color: #b3de5b;
     background-image: none;
     border-color: #55c13c;
 }
@@ -204,7 +204,7 @@ header {
     color: #dafbcf;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu {
-    background-color: #8cde6e;
+    background-color: #b3de5b;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a {
     color: #ffffff;

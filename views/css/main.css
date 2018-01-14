@@ -60,12 +60,12 @@ main {
 
 /*футер*/
 .footer-navbar{
-    background-color: #8cde6e;
+    background-color: #b3de5b;
 }
 
 /*хедер*/
 .navbar-default {
-  background-color: #8cde6e;
+  background-color: #b3de5b;
   background-image: none;
   border-color: #55c13c;
 }
@@ -88,7 +88,7 @@ main {
   color: #dafbcf;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu {
-  background-color: #8cde6e;
+  background-color: #b3de5b;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a {
   color: #ffffff;

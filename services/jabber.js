@@ -1,1 +1,0 @@
-var xmpp = require('simple-xmpp');

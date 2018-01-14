@@ -20,7 +20,6 @@ function checkerdate(arr) {
     var dateArray = arr.split("-");
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).valueOf();
-    console.log(now);
     var other = new Date(parseInt(dateArray[0],10),parseInt(dateArray[1],10)-1,parseInt(dateArray[2],10)).valueOf();
     var othere = new Date(parseInt(dateArray[0],10),parseInt(dateArray[1],10)-1,parseInt(dateArray[2],10));
     console.log(othere);
