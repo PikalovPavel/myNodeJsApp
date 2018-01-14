@@ -42,7 +42,9 @@ function loadPrisoners() {
                 } else {
                     register = JSON.parse(xhr.responseText);
                     console.log(register);
+                    console.log(register.prisoner_register);
                     try {
+
                         register['ЧЕЛОВЕК_ИД'] = register.prisoner_register.human_prisoner['ИМЯ'];
                         register['ПРЕДМЕТ_ИД'] = register.prisoner_register.human_prisoner['ФАМИЛИЯ'];
                         app.message = register;
@@ -50,6 +52,7 @@ function loadPrisoners() {
                         $("#notify").removeClass();
                     } catch (e) {
                         app.message={};
+                        console.log(e);
                         if ( !($( "#notify" ).length) ) {
                             $("#notify-container").append("<div id=\"notify\"></div>");
                         }
@@ -58,7 +61,7 @@ function loadPrisoners() {
                         $("#notify").addClass("alert");
                         $("#notify").addClass("alert-warning");
                         $("#notify").append("<a href=\"#\" id=\"notify-close\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">×</a>");
-                        $("#notify").append("У заключённого с этим айди на данный момент не стоит оценок:(");
+                        $("#notify").append("У заключённого с этим id = "+inputId+" на данный момент не стоит оценок:(");
                     }
                 }
             } else {

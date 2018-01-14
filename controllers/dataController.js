@@ -154,6 +154,38 @@ module.exports = (app, synchronizer) => {
         });
     });
 
+    app.get('/api/register/:prId/:subId',isLoggedIn, (req, resp)=> {
+        synchronizer.sequelize.models.ЖУРНАЛ.findOne ({
+            where : {
+                ЧЕЛОВЕК_ИД: req.params.prId,
+                ПРЕДМЕТ: req.params.subId
+            },
+            include: [
+                {
+                    model: synchronizer.sequelize.models.ЗАКЛЮЧЁННЫЙ,
+                    as: 'prisoner_register',
+                    attributes: {
+                        exclude: ['СТАТЬЯ','СРОК','ТИП_РАЦИОНА','ТИП_КАМЕРЫ','ШТРАФЫ','НОМЕР_КАМЕРЫ']
+                    },
+                   include: [
+                       {
+                           model:synchronizer.sequelize.models.ЧЕЛОВЕК,
+                           as: 'human_prisoner',
+                           attributes: {
+                               exclude: ['ЧЕЛОВЕК_ИД','ОТЧЕСТВО','Дата_Рождения','ПОЛ','РОЛЬ','ПАРОЛЬ','АВАТАР']
+                           }
+                       }
+
+                   ]
+                }
+            ]
+
+        }).then((register)=> {
+            register ?
+                resp.send(JSON.stringify(register)) :
+                resp.send('{}');
+        });
+    });
 
     app.get('/api/register/:prId/:subId',isLoggedIn, (req, resp)=> {
         synchronizer.sequelize.models.ЖУРНАЛ.findAll ({
