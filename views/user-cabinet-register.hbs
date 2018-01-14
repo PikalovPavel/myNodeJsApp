@@ -90,6 +90,20 @@
                     </nav>
                 </header>
             </div>
+            <script>
+                function checkCurr(d) {
+                    if (window.event) {
+                        if (event.keyCode == 37 || event.keyCode == 39) return;
+                    }
+                    d.value = d.value.replace(/\D/g, '');
+                }
+                function checkLen(d) {
+                    if (window.event) {
+                        if (event.keyCode == 37 || event.keyCode == 39) return;
+                    }
+                    console.log(d.value.length);
+                }
+            </script>
             <div class="user-dashboard">
                 <h1>Электронный журнал</h1>
                 <div class="row">
@@ -98,7 +112,7 @@
                                 <div class="form-group">
                                     <label for="prisonerID"><h2>ID Заключённого:</h2></label>
                                     <input type="text" class="form-control" name="prisonerId" id="prisonerID" aria-describedby="IDHelp"
-                                           placeholder="Введите ID заключённого">
+                                           placeholder="Введите ID заключённого" onkeyup="checkCurr(this)">
                                 </div>
                             </div>
                         </div>

@@ -173,7 +173,7 @@ header {
 }
 
 .table{
-    word-break: break-all;
+    word-break: normal;
 }
 
 .requests td:nth-child(3) {

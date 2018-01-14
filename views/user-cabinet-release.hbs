@@ -98,6 +98,13 @@
                         }
                         d.value = d.value.replace(/\D/g,'');
                     }
+                    function checkLentg(d) {
+                        if(window.event)
+                        {
+                            if(event.keyCode == 37 || event.keyCode == 39) return;
+                        }
+                        d.value = d.value.replace(/\D/g,'');
+                    }
                 </script>
 
                     <div class="row">
@@ -106,7 +113,7 @@
                                 <div class="form-group">
                                     <label for="prisonerID"><h2>ID Заключённого:</h2></label>
                                     <input type="text" class="form-control" id="prisonerID" aria-describedby="IDHelp"
-                                           placeholder="Введите ID заключённого" onkeyup="checkCurr(this)">
+                                           placeholder="Введите ID заключённого"  onkeyup="checkCurr(this)">
 
                                 </div>
                             </div>
@@ -118,7 +125,7 @@
                             <div class="register">
                                 <div class="form-group">
                                     <label for="reason"><h2>Причина:</h2></label>
-                                    <textarea class="form-control" rows="10" id="reason"></textarea>
+                                    <textarea class="form-control" rows="10" id="reason" maxlength="254"></textarea>
                                 </div>
                             </div>
                         </div>
