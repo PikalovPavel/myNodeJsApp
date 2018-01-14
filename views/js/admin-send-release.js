@@ -1,4 +1,4 @@
-function sendARelease() {
+function sendToUserRelease() {
     if (inputText!==null) {
         var inputText = $("#prisonerID").val();
         var inputId = parseInt(inputText,10);

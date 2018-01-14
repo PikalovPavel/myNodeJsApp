@@ -8,6 +8,7 @@ function loadVisitors() {
         Console.log('Ошибка ' + xhr.status + ': ' + xhr.statusText);
     } else {
         visitors = JSON.parse(xhr.responseText);
+        console.log(visitors);
         for (k in visitors) {
             var arr;
             arr=visitors[k]['ДАТА_ПОСЕЩЕНИЯ'].split("T");

@@ -111,7 +111,7 @@
                     $(".checkboxe").each(function () {
                         map[$(this).attr("id")] = $(this).is(':checked');
                     });
-
+                    console.log(map);
                     $.ajax({
                         url: '/api/setVisit',
                         type: 'POST',
@@ -170,11 +170,11 @@
                                         <td>\{{prisoner['ДАТА_ПОСЕЩЕНИЯ']}}</td>
                                         <td>
                                             <div v-if="prisoner['СТАТУС']">
-                                                <input class="checkbox" type="checkbox"
+                                                <input class="checkboxe" type="checkbox"
                                                        v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']" checked/>
                                             </div>
                                             <div v-else>
-                                                <input class="checkbox" type="checkbox"
+                                                <input class="checkboxe" type="checkbox"
                                                        v-bind:id="prisoner['ПОСЕЩЕНИЕ_ИД']"/>
                                             </div>
                                         </td>

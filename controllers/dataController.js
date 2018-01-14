@@ -470,10 +470,12 @@ module.exports = (app, synchronizer) => {
 
     app.post('/api/setVisit', isLoggedIn, (req, resp)=>{
         var mydata = req.body;
+        console.log(req.body);
         var res="true";
         for (key in mydata) {
             synchronizer.sequelize.query("UPDATE ПОСЕЩЕНИЕ SET СТАТУС = "+mydata[key]+" WHERE ПОСЕЩЕНИЕ_ИД = "+key+"").spread((results, metadata) => {
             }).catch(function (err) {
+                console.log(err);
                 res="false";
             })
         }
