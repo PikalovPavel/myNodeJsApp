@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 
-const sequelize = new Sequelize('studs', 's225041','pass', {
+const sequelize = new Sequelize('studs', 's225041','2PGfTyYX', {
         host: 'helios.cs.ifmo.ru',
         dialect: 'postgres',
         pool: {

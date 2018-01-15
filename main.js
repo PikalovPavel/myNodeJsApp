@@ -39,8 +39,8 @@ require('./controllers/dataController')(app, synchronizer);
 synchronizer.sync(false);
 server = http.createServer(app);
 
-server.listen(8080, function (err) {
+server.listen(64000, function (err) {
     let host = server.address().address,
-        port = 8080;
+        port = 64000;
     console.log('listening at http://localhost:%s', port);
 });
